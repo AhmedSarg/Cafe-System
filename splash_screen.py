@@ -9,7 +9,8 @@ splash.title("Splash screen!")
 splash.geometry("840x500+340+140")
 splash.resizable(False,False)
 splash.config(background="#ffeedb")
-
+#rgherilgj
+#gkdfhnktn
 
 
 
