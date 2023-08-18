@@ -4,17 +4,19 @@ from tkinter.ttk import Progressbar
 import time
 import os
 
-splash =Tk()
+splash = Tk()
 splash.title("Splash screen!")
-splash.geometry("840x500+340+140")
+
+screen = Tk()
+screenWidth = screen.winfo_screenwidth()
+screenHeight = screen.winfo_screenheight()
+screen.destroy()
+
 splash.resizable(False,False)
 splash.config(background="#ffeedb")
+splash.attributes('-fullscreen', True)
+splash
 
-
-
-
-#hide the title bar..
-splash.overrideredirect(True)
 
 def login_screen():
     
@@ -22,9 +24,10 @@ def login_screen():
     
     root=Tk()
     root.title("Login")
-    root.geometry("840x470+340+140")
-    root.resizable(False,False)
+    # root.geometry(f"{screenWidth}x{screenHeight}")
+    root.resizable(True,True)
     root.config(background="#ffeedb")
+    root.attributes('-fullscreen', True)
     #Splash timer...
 splash.after(1000,login_screen)
 mainloop()
