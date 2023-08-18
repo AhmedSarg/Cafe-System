@@ -21,20 +21,20 @@ mainframe.grid()
 titleFrame = Frame(mainframe, width = width, height = height, bg = '#FFEEDB')
 titleFrame.grid(row = 0, column = 0)
 
-titleLabel=Label(titleFrame, font = ('Lucida Handwriting', 30), text = 'Client search', bg = '#FFEEDB', border = 10)
-titleLabel.grid(row = 0, column = 0, padx = 10)
+titleLabel = Label(titleFrame, font = ('Lucida Handwriting', 30), text = 'Client Search', bg = '#FFEEDB', border = 10)
+titleLabel.grid(row = 0, column = 0, padx = 50, pady = 30)
 
-lbl_name=Label(frame, text = 'Name', bg = '#0d1f2d', fg = '#f6f4f6')
-lbl_name.grid(row = 0, column = 0)
+labelName = Label(frame, text = 'Name', bg = '#0d1f2d', fg = '#f6f4f6')
+labelName.grid(row = 0, column = 0)
 
-txt_name=Text(frame, bg = '#f6f4f6', width = 65, height = 2)
-txt_name.grid(row = 0, column = 1, padx = 10, pady = 10)
+txtName = Text(frame, bg = '#f6f4f6', width = 65, height = 2)
+txtName.grid(row = 0, column = 1, padx = 10, pady = 10)
 
-btn_se=Button(frame, text = 'search', bg = '#f6f4f6', width = 10)
-btn_se.place(x = 385, y = 70)
+buttonSearch = Button(frame, text = 'search', bg = '#f6f4f6', width = 10)
+buttonSearch.place(x = 385, y = 70)
 
-btn_add=Button(frame, text = 'Add client', bg = '#f6f4f6', width = 10)
-btn_add.place(x = 120, y = 70)
+buttonAdd = Button(frame, text = 'Add client', bg = '#f6f4f6', width = 10)
+buttonAdd.place(x = 120, y = 70)
 
 frame.place(anchor = 'center', relx = 0.5, rely = 0.5)
 
