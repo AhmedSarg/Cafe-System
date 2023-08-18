@@ -1,1 +1,7 @@
-print("Yarab ne5las")
+print("Ahmed")
+print("Ahmed")
+print("Ahmed")
+print("Ahmed")
+print("Ahmed")
+print("Ahmed")
+
