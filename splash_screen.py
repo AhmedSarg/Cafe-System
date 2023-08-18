@@ -12,8 +12,7 @@ splash.config(background="#ffeedb")
 
 
 
-#hgfhgdf
-#jfgjkdf
+
 #hide the title bar..
 splash.overrideredirect(True)
 
