@@ -25,17 +25,17 @@ titleFrame.grid(row = 0, column = 0)
 titleLabel=Label(titleFrame,font=('Lucida Handwriting',30),text='Client search',bg='#FFEEDB',border=10)
 titleLabel.grid(row=0,column=0,padx=10)
 
-lbl_name=Label(frame,text='Name',bg='#0d1f2d',fg='white')
+lbl_name=Label(frame,text='Name',bg='#0d1f2d',fg='#f6f4f6')
 lbl_name.grid(row=0,column=0)
 
-txt_name=Entry(frame,bg='white',width=70)
+txt_name=Text(frame,bg='#f6f4f6',width=65,height=2)
 txt_name.grid(row=0,column=1,padx=10,pady=10)
 
-btn=Button(frame,text='search',bg='white' ,width=10)
-btn.grid(row=1,column=1,padx=10,pady=10,columnspan=2)
+btn_se=Button(frame,text='search',bg='#f6f4f6',width=10)
+btn_se.place(x=385,y=70)
 
-btn=Button(frame,text='Add client',bg='white',width=10)
-btn.grid(row=1,column=2,padx=10,pady=10,columnspan=1)
+btn_add=Button(frame,text='Add client',bg='#f6f4f6',width=10)
+btn_add.place(x=120,y=70)
 
 frame.place(anchor='center',relx=.5,rely=.5 )
 
