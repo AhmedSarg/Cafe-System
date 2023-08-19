@@ -1,7 +1,7 @@
 from tkinter import *
 from values.colors import *
 from tkinter import ttk
-from customtkinter import *
+#from customtkinter import *
 
 
 root = Tk()
