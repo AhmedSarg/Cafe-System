@@ -1,5 +1,6 @@
 from tkinter import *
 from values.colors import *
+from values.fonts import *
 from tkinter import ttk
 from customtkinter import *
 
@@ -17,7 +18,7 @@ titleFrame.grid()
 
 titleLabel = Label(
     titleFrame,
-    font=("Lucida Handwriting", 30),
+    font=(lucida, 30),
     text="Client Search",
     bg=beige,
 )
@@ -42,7 +43,7 @@ searchEntry = CTkEntry(
     border_width=0,
     fg_color=white,
     text_color=black,
-    font=("sans-serif", 16),
+    font=(normal, 16),
     placeholder_text="Name",
     placeholder_text_color=grey,
 )
@@ -56,7 +57,7 @@ buttonAdd = CTkButton(
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=("Lucida Handwriting", 17),
+    font=(lucida, 17),
     corner_radius=10
 )
 buttonAdd.grid(row=2, column=1, pady=40)
@@ -69,7 +70,7 @@ buttonSearch = CTkButton(
     hover=False,
     text_color=black,
     fg_color=white,
-    font=("Lucida Handwriting", 17),
+    font=(lucida, 17),
     corner_radius=16,
 )
 buttonSearch.grid(row=2, column=4, pady=40)
