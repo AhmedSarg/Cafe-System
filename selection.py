@@ -17,8 +17,14 @@ btn_cafe_image=PhotoImage(file='icons\cafe.PNG')
 btn_takeaway_image=PhotoImage(file='icons\keaway.PNG')
 #image_takeaway donot change name image file 
 
-label_title = Label(root,text='Selecion Ordwe Type ',fg=black,bg=beige, cursor='heart' ,font=(font_style,45))
-label_title.place(x=15,y=10)
+cup = Image.open("icons\cup.png")
+cup = cup.resize((80, 80))
+icon = CTkImage(light_image=cup, size=(80, 80))
+logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
+logo.place(x=screenWidth-100, y=20)
+label_title = Label(
+    root,text='Selection Order Type ',fg=black,bg=beige, cursor='heart' ,font=(lucida,40))
+label_title.place(x=15,y=20)
 #title
 
 def onpressed_cafe():
