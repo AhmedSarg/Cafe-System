@@ -53,7 +53,6 @@ fnameLabel = CTkLabel(
     font=(lucida, 20),
 )
 fnameLabel.grid(row=0, column=0, padx=(0, 30))
-# fnameLabel.place(x=30,y=50)
 
 fnameEntry = CTkEntry(
     nameFrame,
@@ -68,7 +67,6 @@ fnameEntry = CTkEntry(
     placeholder_text_color=grey,
 )
 fnameEntry.grid(row=1, column=0, columnspan=40, padx=(0, 30))
-# fnameEntry.place(x=25,y=90)
 
 lnameLabel = CTkLabel(
     nameFrame,
@@ -77,7 +75,6 @@ lnameLabel = CTkLabel(
 )
 
 lnameLabel.grid(row=0, column=40, padx=(30, 0))
-# lnameLabel.place(x=430,y=50)
 
 lnameEntry = CTkEntry(
     nameFrame,
@@ -92,7 +89,6 @@ lnameEntry = CTkEntry(
     placeholder_text_color=grey,
 )
 lnameEntry.grid(row=1, column=40, columnspan=40, padx=(30, 0))
-# lnameEntry.place(x=430,y=90)
 
 nameFrame.grid(row=0, column=0, padx=50, pady=(40, 20))
 

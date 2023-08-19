@@ -47,7 +47,7 @@ searchFrame = CTkFrame(
 
 searchLabel = CTkLabel(
     searchFrame,
-    text="Name",
+    text="Phone Number",
     font=(lucida, 24),
 )
 searchLabel.grid(row=0, column=0,padx=(50, 0), pady=(0, 10))
@@ -61,7 +61,7 @@ searchEntry = CTkEntry(
     fg_color=white,
     text_color=black,
     font=(normal, 16),
-    placeholder_text="Name",
+    placeholder_text="Phone Number",
     placeholder_text_color=grey,
 )
 searchEntry.grid(row=1, column=0, columnspan=80, padx=50)
@@ -97,6 +97,8 @@ buttonSearch = CTkButton(
     corner_radius=16,
 )
 buttonSearch.grid(row=2, column=5, pady=40)
+
+
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
