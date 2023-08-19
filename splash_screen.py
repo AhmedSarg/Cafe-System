@@ -16,7 +16,7 @@ import os
 splash =Tk()
 splash.title("Splash screen!")
 splash.geometry("840x500+340+140")
-splash.resizable(False,False)
+splash.resizable(False, False)
 splash.config(background="#ffeedb")
 lbl = Label(splash, text='Cafe System',font=(lucida, 40), fg=black,bg=beige)
 lbl.place(x=245,y=150)
