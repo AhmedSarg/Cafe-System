@@ -37,6 +37,14 @@ mainFrame = CTkFrame(
     corner_radius=20,
 )
 
+detailsframe=CTkFrame(
+    root,
+    fg_color=darkBlue,
+    bg_color=transparent,
+    corner_radius=20,
+)
+
+
 searchFrame = CTkFrame(
     mainFrame,
     fg_color=transparent,
@@ -98,6 +106,68 @@ buttonSearch = CTkButton(
 )
 buttonSearch.grid(row=2, column=5, pady=40)
 
+
+
+idLabel = CTkLabel(
+    detailsframe,
+    text="Id",
+    font=(lucida, 20),
+)
+idLabel.grid()
+
+nameLabel = CTkLabel(
+    detailsframe,
+    text="Name",
+    font=(lucida, 20),
+)
+nameLabel.grid()
+
+addressLabel = CTkLabel(
+    detailsframe,
+    text="Address",
+    font=(lucida, 20),
+)
+addressLabel.grid()
+
+buttonclose = CTkButton(
+    detailsframe,
+    width=75,
+    height=50,
+    text="close",
+    hover=True,
+    hover_color=cafe,
+    text_color=black,
+    fg_color=white,
+    bg_color=transparent,
+    font=(lucida, 22),
+    corner_radius=16,
+)
+buttonclose.grid()
+
+showIdLabel = CTkLabel(
+    detailsframe,
+    text=" ",
+    font=(lucida, 20),
+)
+showIdLabel.grid()
+
+shownameLabel = CTkLabel(
+    detailsframe,
+    text=" ",
+    font=(lucida, 20),
+)
+shownameLabel.grid()
+
+showaddressLabel = CTkLabel(
+    detailsframe,
+    text=" ",
+    font=(lucida, 20),
+)
+showaddressLabel.grid()
+
+
+
+detailsframe.place(anchor="center", relx=0.5, rely=0.5)
 
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
