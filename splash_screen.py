@@ -2,8 +2,14 @@ from tkinter import *
 from values.colors import *
 from tkinter import ttk
 from tkinter.ttk import Progressbar
+from customtkinter import *
+from values.colors import *
+from values.fonts import *
+from PIL import ImageTk, Image
+
 import time
 import os
+
 
 ##Splash Screen...
 
@@ -12,19 +18,23 @@ splash.title("Splash screen!")
 splash.geometry("840x500+340+140")
 splash.resizable(False,False)
 splash.config(background="#ffeedb")
+lbl = Label(splash, text='Cafe System',font=(lucida, 40), fg=black,bg=beige)
+lbl.place(x=245,y=150)
 
-
+cup = Image.open("icons/cup.png")
+cup = cup.resize((80, 80))
+icon = CTkImage(light_image=cup, size=(80, 80))
+logo = CTkLabel(splash, image=icon, bg_color=transparent, text="")
+logo.place(x=388, y=250)
 
 
 #hide the title bar..
 splash.overrideredirect(True)
 
 def login_screen():
-    
+    splash.destroy()
+    root = Tk()
     root.title("Login")
-    root.geometry("840x470+340+140")
-    root.resizable(False,False)
-    root.config(background="#ffeedb")
     #Splash timer...
-splash.after(1000,login_screen)
+splash.after(3000,login_screen)
 mainloop()
