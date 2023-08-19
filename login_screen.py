@@ -4,7 +4,7 @@ from values.fonts import *
 from customtkinter import *
 from PIL import ImageTk, Image
 root=Tk()
-root.resizable(True,True)
+root.resizable(False,False)
 root.title("Login")
 root.state("zoomed")
 screenWidth = root.winfo_screenwidth()

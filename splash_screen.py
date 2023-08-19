@@ -6,7 +6,6 @@ from customtkinter import *
 from values.colors import *
 from values.fonts import *
 from PIL import ImageTk, Image
-
 import time
 import os
 

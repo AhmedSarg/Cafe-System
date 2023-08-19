@@ -6,6 +6,7 @@ from PIL import ImageTk, Image
 
 
 root = Tk()
+root.title('Success')
 root.state("zoomed")
 root.resizable(False, False)
 root.config(background=beige)
