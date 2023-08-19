@@ -12,12 +12,12 @@ screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
 
 root.configure(bg=beige)
-btn_cafe_image=PhotoImage(file='icons\cafe.PNG')
+btn_cafe_image=PhotoImage(file='TeamTest\icons\cafe.PNG')
 #image_cafe
-btn_takeaway_image=PhotoImage(file='icons\keaway.PNG')
+btn_takeaway_image=PhotoImage(file='TeamTest\icons\keaway.PNG')
 #image_takeaway donot change name image file 
 
-cup = Image.open("icons\cup.png")
+cup = Image.open("TeamTest\icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")

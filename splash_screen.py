@@ -21,7 +21,7 @@ splash.config(background="#ffeedb")
 lbl = Label(splash, text='Cafe System',font=(lucida, 40), fg=black,bg=beige)
 lbl.place(x=245,y=150)
 
-cup = Image.open("icons/cup.png")
+cup = Image.open("TeamTest\icons/cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(splash, image=icon, bg_color=transparent, text="")
