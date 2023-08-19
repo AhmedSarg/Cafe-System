@@ -1,19 +1,15 @@
 from tkinter import *
+from values.colors import *
+from values.fonts import *
+from customtkinter import *
+from PIL import ImageTk, Image
 root=Tk()
-width = root.winfo_screenwidth()
-height = root.winfo_screenheight()
-root.resizable(False, False)
-root.geometry("1600x1200")
+root.resizable(True,True)
 root.title("Select")
-
-#constant
-coffee= "#aa8f66"
-beige= "#ffeedb"
-dark_blue= "#0d1f2d"
-black= "#151415"
-white="#f6f4f6"
-font_style="Lucida Handwriting"
-#constant
+root.state("zoomed")
+root.resizable(False, False)
+screenWidth = root.winfo_screenwidth()
+screenHeight = root.winfo_screenheight()
 
 root.configure(bg=beige)
 btn_cafe_image=PhotoImage(file='icons\cafe.PNG')
@@ -21,8 +17,14 @@ btn_cafe_image=PhotoImage(file='icons\cafe.PNG')
 btn_takeaway_image=PhotoImage(file='icons\keaway.PNG')
 #image_takeaway donot change name image file 
 
-label_title = Label(root,text='Selecion Ordwe Type ',fg=black,bg=beige, cursor='heart' ,font=(font_style,45))
-label_title.place(x=15,y=10)
+cup = Image.open("icons\cup.png")
+cup = cup.resize((80, 80))
+icon = CTkImage(light_image=cup, size=(80, 80))
+logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
+logo.place(x=screenWidth-100, y=20)
+label_title = Label(
+    root,text='Selection Order Type ',fg=black,bg=beige, cursor='heart' ,font=(lucida,40))
+label_title.place(x=15,y=20)
 #title
 
 def onpressed_cafe():

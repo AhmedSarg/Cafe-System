@@ -18,13 +18,13 @@ titleFrame.grid()
 
 titleLabel = Label(
     titleFrame,
-    font=(lucida, 30),
+    font=(lucida, 40),
     text="Client Search",
     bg=beige,
 )
 titleLabel.grid(padx=10, pady=30)
 
-cup = Image.open("icons/cup.png")
+cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
