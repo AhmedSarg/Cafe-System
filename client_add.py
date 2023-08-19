@@ -6,7 +6,7 @@ from PIL import ImageTk, Image
 
 
 root = Tk()
-root.title("Client Search")
+root.title("Client Add")
 root.state("zoomed")
 root.resizable(False, False)
 root.config(background=beige)
@@ -24,7 +24,7 @@ titleLabel = Label(
 )
 titleLabel.grid(padx=10, pady=30)
 
-cup = Image.open("TeamTest\icons\cup.png")
+cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
