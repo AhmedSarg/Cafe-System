@@ -40,18 +40,24 @@ mainFrame = CTkFrame(
     corner_radius=20,
 )
 
-
+nameFrame = CTkFrame(
+    mainFrame,
+    fg_color=transparent,
+    bg_color=transparent,
+    width=670,
+    height=70,
+)
 
 fnameLabel = CTkLabel(
-    mainFrame,
+    nameFrame,
     text="first Name",
     font=(lucida, 20),
 )
-
-fnameLabel.place(x=30,y=50)
+fnameLabel.grid(row=0, column=0, padx=(0, 50))
+# fnameLabel.place(x=30,y=50)
 
 fnameEntry = CTkEntry(
-    mainFrame,
+    nameFrame,
     width=300,
     height=35,
     corner_radius=10,
@@ -62,18 +68,20 @@ fnameEntry = CTkEntry(
     placeholder_text="First Name",
     placeholder_text_color=grey,
 )
-fnameEntry.place(x=25,y=90)
+fnameEntry.grid(row=1, column=0, columnspan=20, padx=(0, 50))
+# fnameEntry.place(x=25,y=90)
 
 lnameLabel = CTkLabel(
-    mainFrame,
+    nameFrame,
     text="last Name",
     font=(lucida, 20),
 )
 
-lnameLabel.place(x=430,y=50)
+lnameLabel.grid(row=0, column=20, padx=(50, 0))
+# lnameLabel.place(x=430,y=50)
 
 lnameEntry = CTkEntry(
-    mainFrame,
+    nameFrame,
     width=300,
     height=35,
     corner_radius=10,
@@ -84,7 +92,10 @@ lnameEntry = CTkEntry(
     placeholder_text="Last Name",
     placeholder_text_color=grey,
 )
-lnameEntry.place(x=430,y=90)
+lnameEntry.grid(row=1, column=20, columnspan=20, padx=(50, 0))
+# lnameEntry.place(x=430,y=90)
+
+nameFrame.grid(row=0, column=0)
 
 AddressLabel = CTkLabel(
     mainFrame,
