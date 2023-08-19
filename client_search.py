@@ -5,71 +5,75 @@ from customtkinter import *
 
 
 root = Tk()
+root.title("Client Search")
 root.state("zoomed")
-
-width = root.winfo_screenwidth()
-height = root.winfo_screenheight()
-
 root.resizable(False, False)
-root.config(background="#FFEEDB")
+root.config(background=beige)
+screenWidth = root.winfo_screenwidth()
+screenHeight = root.winfo_screenheight()
 
-frame = Frame(root, bg="#0d1f2d", border=100)
-mainframe = Frame(root)
-mainframe.grid()
-
-titleFrame = Frame(mainframe, width=width, height=height, bg="#FFEEDB")
-titleFrame.grid(row=0, column=0)
+titleFrame = Frame(root, bg=beige)
+titleFrame.grid()
 
 titleLabel = Label(
     titleFrame,
     font=("Lucida Handwriting", 30),
     text="Client Search",
-    bg="#FFEEDB",
-    border=10,
+    bg=beige,
 )
-titleLabel.grid(row=0, column=0, padx=50, pady=30)
+titleLabel.grid(padx=50, pady=30)
 
-labelName = Label(frame, text="Name", bg="#0d1f2d", fg="#f6f4f6")
-labelName.grid(row=0, column=0)
-labelName.location
+mainFrame = CTkFrame(
+    root,
+    fg_color=darkBlue,
+    bg_color=transparent,
+    width=800,
+    height=300,
+    corner_radius=20,
+)
 
-txtName = CTkEntry(
-    frame,
-    width=600,
+
+
+searchEntry = CTkEntry(
+    mainFrame,
+    width=670,
     height=35,
-    corner_radius=50,
+    corner_radius=10,
+    border_width=0,
     fg_color=white,
     text_color=black,
-    font=("Lucida Handwriting", 14),
+    font=("sans-serif", 16),
     placeholder_text="Name",
-    placeholder_text_color="#AAAAAA",
+    placeholder_text_color=grey,
 )
-txtName.grid(row=1, column=0, padx=10, pady=10)
-
+searchEntry.grid(row=0, column=0, rowspan=1, columnspan=6, pady=(30, 0), padx=100)
 buttonAdd = CTkButton(
-    frame,
+    mainFrame,
+    width=170,
     height=40,
     text="Add Client",
-    hover=False,
+    hover=True,
     text_color=black,
     fg_color=white,
+    bg_color=transparent,
     font=("Lucida Handwriting", 17),
     corner_radius=10
 )
-buttonAdd.place(x=120, y=70)
+buttonAdd.grid(row=2, column=1, pady=40)
 
 buttonSearch = CTkButton(
-    frame,
+    mainFrame,
+    width=170,
     height=40,
     text="Search",
     hover=False,
     text_color=black,
     fg_color=white,
     font=("Lucida Handwriting", 17),
-    corner_radius=16
+    corner_radius=16,
 )
-buttonSearch.place(x=385, y=70)
+buttonSearch.grid(row=2, column=4, pady=40)
 
-frame.place(anchor="center", relx=0.5, rely=0.5)
+mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
 root.mainloop()
