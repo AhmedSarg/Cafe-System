@@ -162,35 +162,56 @@ phoneEntry.grid(row=1, column=0, columnspan=80)
 
 phoneFrame.grid(row=2, column=0, padx=50, pady=20)
 
-buttonback = CTkButton(
+buttonsFrame = CTkFrame(
     mainFrame,
-    width=170,
-    height=40,
+    fg_color=transparent,
+    bg_color=transparent,
+    width=700,
+    height=70,
+    corner_radius=10
+)
+
+tmp = CTkLabel(
+    buttonsFrame,
+    text="",
+    width=700,
+    height=0,
+    bg_color=transparent,
+    fg_color=transparent,
+)
+tmp.grid(row=0, column=0, columnspan=8)
+
+buttonback = CTkButton(
+    buttonsFrame,
+    width=250,
+    height=50,
     text="Back",
     hover=True,
     hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=(lucida, 17),
+    font=(lucida, 22),
     corner_radius=16,
 )
-buttonback.place(x=70,y=360)
+buttonback.grid(row=0, column=1)
 
 buttonnext = CTkButton(
-    mainFrame,
-    width=170,
-    height=40,
+    buttonsFrame,
+    width=250,
+    height=50,
     text="Next",
     hover=True,
     hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=(lucida, 17),
+    font=(lucida, 22),
     corner_radius=16,
 )
-buttonnext.place(x=470,y=360)
+buttonnext.grid(row=0, column=6)
+
+buttonsFrame.grid(row=3, column=0, padx=50, pady=(20, 40))
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
