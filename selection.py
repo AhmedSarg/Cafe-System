@@ -19,8 +19,15 @@ btn_takeaway_image=PhotoImage(file='icons\keaway.PNG')
 
 cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
-icon = CTkImage(light_image=cup, size=(80, 80))
-logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
+icon = CTkImage(
+    light_image=cup,
+      size=(80, 80)
+      )
+logo = CTkLabel(
+    root, image=icon,
+      bg_color=transparent,
+        text=""
+        )
 logo.place(x=screenWidth-100, y=20)
 label_title = Label(
     root,text='Selection Order Type ',fg=black,bg=beige, cursor='heart' ,font=(lucida,40))
