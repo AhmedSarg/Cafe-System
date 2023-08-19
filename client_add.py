@@ -46,6 +46,7 @@ nameFrame = CTkFrame(
     bg_color=transparent,
     width=670,
     height=70,
+    corner_radius=20
 )
 
 fnameLabel = CTkLabel(
@@ -95,7 +96,7 @@ lnameEntry = CTkEntry(
 lnameEntry.grid(row=1, column=20, columnspan=20, padx=(50, 0))
 # lnameEntry.place(x=430,y=90)
 
-nameFrame.grid(row=0, column=0)
+nameFrame.grid(row=0, column=0, padx=30, pady=50)
 
 AddressLabel = CTkLabel(
     mainFrame,
