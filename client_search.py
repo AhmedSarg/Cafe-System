@@ -47,7 +47,7 @@ btn_se=Button(frame,text='search',bg='#f6f4f6',width=10)
 btn_se.place(x=385,y=70)
 
 btn_add=Button(frame,text='Add client',bg='#f6f4f6',width=10)
-btn_add.place(x=120,y=70)
+btn_add.place(x=150,y=70)
 
 frame.place(anchor='center',relx=.5,rely=.5 )
 
