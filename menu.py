@@ -16,7 +16,7 @@ root_menu.resizable(False,False)
 root_menu.state("zoomed")
 root_menu.config(background=beige)
 
-cup = Image.open("TeamTest\icons\cup.png")
+cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(50, 50))
 logo = CTkLabel(root_menu, image=icon, bg_color=transparent, text="")
@@ -40,7 +40,7 @@ titleLabel = Label(
 )
 titleLabel.grid(padx=10, pady=10)
 
-cup = Image.open("TeamTest\icons\cup.png")
+cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(50, 50))
 logo = CTkLabel(root_menu, image=icon, bg_color=transparent, text="")
@@ -162,7 +162,7 @@ lbl_quantity = Label(
 )
 lbl_quantity.grid(row=1,column=3,padx=50,pady=22)
 
-minus = Image.open("TeamTest\icons\minus.png")
+minus = Image.open("icons\minus.png")
 minus = minus.resize((80, 80))
 icon = CTkImage(light_image=minus, size=(50, 50))
 logo = CTkLabel(quantity_Frame, image=icon, bg_color=transparent, text="")

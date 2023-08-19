@@ -34,8 +34,6 @@ mainFrame = CTkFrame(
     root,
     fg_color=darkBlue,
     bg_color=transparent,
-    width=800,
-    height=300,
     corner_radius=20,
 )
 
@@ -43,7 +41,7 @@ searchFrame = CTkFrame(
     mainFrame,
     fg_color=transparent,
     bg_color=transparent,
-    width=670,
+    width=700,
     height=70,
 )
 
@@ -52,11 +50,11 @@ searchLabel = CTkLabel(
     text="Name",
     font=(lucida, 24),
 )
-searchLabel.grid(row=0, column=0, padx=(0, 0), pady=(0, 10))
+searchLabel.grid(row=0, column=0,padx=(50, 0), pady=(0, 10))
 
 searchEntry = CTkEntry(
     searchFrame,
-    width=670,
+    width=700,
     height=35,
     corner_radius=10,
     border_width=0,
@@ -66,39 +64,39 @@ searchEntry = CTkEntry(
     placeholder_text="Name",
     placeholder_text_color=grey,
 )
-searchEntry.grid(row=1, column=0, columnspan=4, padx=100)
+searchEntry.grid(row=1, column=0, columnspan=80, padx=50)
 
-searchFrame.grid(rowspan=1, columnspan=6, pady=(40, 0))
+searchFrame.grid(rowspan=1, columnspan=8, pady=(40, 0))
 
 buttonAdd = CTkButton(
     mainFrame,
-    width=170,
-    height=40,
+    width=250,
+    height=50,
     text="Add Client",
     hover=True,
     hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=(lucida, 17),
+    font=(lucida, 22),
     corner_radius=16,
 )
-buttonAdd.grid(row=2, column=1, pady=40)
+buttonAdd.grid(row=2, column=2, pady=40)
 
 buttonSearch = CTkButton(
     mainFrame,
-    width=170,
-    height=40,
+    width=250,
+    height=50,
     text="Search",
     hover=True,
     hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=(lucida, 17),
+    font=(lucida, 22),
     corner_radius=16,
 )
-buttonSearch.grid(row=2, column=4, pady=40)
+buttonSearch.grid(row=2, column=5, pady=40)
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
