@@ -45,7 +45,7 @@ mainFrame = CTkFrame(
 fnameLabel = CTkLabel(
     mainFrame,
     text="first Name",
-    font=(lucida, 24),
+    font=(lucida, 20),
 )
 
 fnameLabel.place(x=30,y=50)
@@ -59,7 +59,7 @@ fnameEntry = CTkEntry(
     fg_color=white,
     text_color=black,
     font=(normal, 16),
-    placeholder_text="Name",
+    placeholder_text="First Name",
     placeholder_text_color=grey,
 )
 fnameEntry.place(x=25,y=90)
@@ -67,7 +67,7 @@ fnameEntry.place(x=25,y=90)
 lnameLabel = CTkLabel(
     mainFrame,
     text="last Name",
-    font=(lucida, 24),
+    font=(lucida, 20),
 )
 
 lnameLabel.place(x=430,y=50)
@@ -81,7 +81,7 @@ lnameEntry = CTkEntry(
     fg_color=white,
     text_color=black,
     font=(normal, 16),
-    placeholder_text="Name",
+    placeholder_text="Last Name",
     placeholder_text_color=grey,
 )
 lnameEntry.place(x=430,y=90)
@@ -89,7 +89,7 @@ lnameEntry.place(x=430,y=90)
 AddressLabel = CTkLabel(
     mainFrame,
     text="Address",
-    font=(lucida, 24),
+    font=(lucida, 20),
 )
 
 AddressLabel.place(x=30,y=150)
@@ -103,7 +103,7 @@ AddressEntry= CTkEntry(
     fg_color=white,
     text_color=black,
     font=(normal, 16),
-    placeholder_text="Name",
+    placeholder_text="Address",
     placeholder_text_color=grey,
 )
 
@@ -113,7 +113,7 @@ AddressEntry.place(x=25,y=185)
 phoneLabel = CTkLabel(
     mainFrame,
     text="phone number",
-    font=(lucida, 24),
+    font=(lucida, 20),
 )
 
 phoneLabel.place(x=30,y=240)
