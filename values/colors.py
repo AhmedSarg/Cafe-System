@@ -1,0 +1,5 @@
+cafe = "#aa8f66"
+beige = "#ffeedb"
+darkBlue = "#0d1f2d"
+black = "#151415"
+white = "#f6f4f6"
