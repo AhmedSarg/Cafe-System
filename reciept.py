@@ -5,9 +5,8 @@ from customtkinter import *
 from PIL import ImageTk, Image
 root=Tk()
 root.resizable(True,True)
-root.title("Select")
+root.title("Reciept")
 root.state("zoomed")
-root.resizable(False, False)
 screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
 
@@ -84,7 +83,7 @@ discount_text = Label(
       cursor='heart',
       font=(lucida,22)
       )
-discount_text.place(x=screenWidth-1000,y=screenHeight-450)
+discount_text.place(x=screenWidth-1000,y=screenHeight-500)
 
 discount = CTkEntry(
     root,
@@ -96,7 +95,7 @@ discount = CTkEntry(
     text_color=black,
     border_color=black
 )
-discount.place(x=screenWidth-1000,y=screenHeight-400)
+discount.place(x=screenWidth-1000,y=screenHeight-450)
 remaining = Label(
     root,
     text='Remaining :',
@@ -105,7 +104,7 @@ remaining = Label(
       cursor='heart',
       font=(lucida,22)
       )
-remaining.place(x=screenWidth-1000,y=screenWidth-250)
+remaining.place(x=screenWidth-1000,y=550)
 number_buttom = Label(
     root,
     text='160.5',
@@ -114,11 +113,11 @@ number_buttom = Label(
       cursor='heart',
       font=(lucida,22)
       )
-number_buttom.place(x=screenWidth-500,y=screenWidth-250)
+number_buttom.place(x=screenWidth-500,y=550)
 btn_next = CTkButton(
     root,
-    width=180,
-    height=40,
+    width=200,
+    height=50,
     text="Next",
     hover=True,
     hover_color=cafe,
@@ -129,5 +128,5 @@ btn_next = CTkButton(
     corner_radius=16,
     border_width=2
 )
-btn_next.place(x=screenWidth-500,y=screenWidth-400)
+btn_next.place(x=750,y=700)
 root.mainloop()

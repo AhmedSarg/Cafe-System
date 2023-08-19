@@ -7,7 +7,6 @@ root=Tk()
 root.resizable(True,True)
 root.title("Select")
 root.state("zoomed")
-root.resizable(False, False)
 screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
 
