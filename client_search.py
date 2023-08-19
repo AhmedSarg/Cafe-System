@@ -1,8 +1,8 @@
 from tkinter import *
 from values.colors import *
 from values.fonts import *
-from tkinter import ttk
 from customtkinter import *
+from PIL import ImageTk, Image
 
 
 root = Tk()
@@ -22,7 +22,13 @@ titleLabel = Label(
     text="Client Search",
     bg=beige,
 )
-titleLabel.grid(padx=50, pady=30)
+titleLabel.grid(padx=10, pady=30)
+
+cup = Image.open("icons/cup.png")
+cup = cup.resize((80, 80))
+icon = CTkImage(light_image=cup, size=(80, 80))
+logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
+logo.place(x=screenWidth-100, y=20)
 
 mainFrame = CTkFrame(
     root,
@@ -33,10 +39,23 @@ mainFrame = CTkFrame(
     corner_radius=20,
 )
 
+searchFrame = CTkFrame(
+    mainFrame,
+    fg_color=transparent,
+    bg_color=transparent,
+    width=670,
+    height=70,
+)
 
+searchLabel = CTkLabel(
+    searchFrame,
+    text="Name",
+    font=(lucida, 24),
+)
+searchLabel.grid(row=0, column=0, padx=(0, 0), pady=(0, 10))
 
 searchEntry = CTkEntry(
-    mainFrame,
+    searchFrame,
     width=670,
     height=35,
     corner_radius=10,
@@ -47,18 +66,22 @@ searchEntry = CTkEntry(
     placeholder_text="Name",
     placeholder_text_color=grey,
 )
-searchEntry.grid(row=0, column=0, rowspan=1, columnspan=6, pady=(30, 0), padx=100)
+searchEntry.grid(row=1, column=0, columnspan=4, padx=100)
+
+searchFrame.grid(rowspan=1, columnspan=6, pady=(40, 0))
+
 buttonAdd = CTkButton(
     mainFrame,
     width=170,
     height=40,
     text="Add Client",
     hover=True,
+    hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
     font=(lucida, 17),
-    corner_radius=10
+    corner_radius=16,
 )
 buttonAdd.grid(row=2, column=1, pady=40)
 
@@ -67,9 +90,11 @@ buttonSearch = CTkButton(
     width=170,
     height=40,
     text="Search",
-    hover=False,
+    hover=True,
+    hover_color=cafe,
     text_color=black,
     fg_color=white,
+    bg_color=transparent,
     font=(lucida, 17),
     corner_radius=16,
 )
