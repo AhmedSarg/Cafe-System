@@ -1,4 +1,5 @@
 from tkinter import *
+from values.colors import *
 from tkinter import ttk
 from tkinter.ttk import Progressbar
 import time
@@ -7,28 +8,21 @@ import os
 
 def login_screen():
     
-    splash.destroy()
-    
-    root = Tk()
     root.title("Login")
-    root.resizable(True,True)
-    root.config(background="#ffeedb")
+    splashLabel.destroy()
     label = Label(root, text = "Login Screen Test")
     label.pack()
-    root.state("zoomed")
-    root.mainloop()
 
-splash = Tk()
-splash.title("Splash screen!")
-label = Label(splash, text = "Splash Screen Test")
-label.pack()
-screen = Tk()
-screenWidth = screen.winfo_screenwidth()
-screenHeight = screen.winfo_screenheight()
-screen.destroy()
+root = Tk()
+root.title("Splash Screen")
+root.state("zoomed")
+root.resizable(False,False)
+root.config(background=beige)
+screenWidth = root.winfo_screenwidth()
+screenHeight = root.winfo_screenheight()
 
-splash.resizable(False,False)
-splash.config(background="#ffeedb")
-splash.state("zoomed")
-splash.after(1000,login_screen)
-mainloop()
+splashLabel = Label(root, text = "Splash Screen Test")
+splashLabel.pack()
+
+root.after(1000,login_screen)
+root.mainloop()

@@ -1,54 +1,105 @@
 from tkinter import *
-
-from tkinter import ttk
-import tkinter.messagebox
-
-
-
-# center the main window according to screen
-def centerWindow(root, width, height):
-    screenwidth = root.winfo_screenwidth()
-    screenheight = root.winfo_screenheight()
-    x = int((screenwidth - width)/2)
-    y = int((screenheight - height)/2)
-    root.geometry(f"{width}x{height}+{x}+{y}")
-
-#*************** 1 - create main form called root  with no resizable ,centered window *******
-root=Tk()
-width=root.winfo_screenwidth()
-height= root.winfo_screenheight()
+from values.colors import *
+from values.fonts import *
+from customtkinter import *
+from PIL import ImageTk, Image
 
 
+root = Tk()
+root.title("Client Search")
+root.state("zoomed")
+root.resizable(False, False)
+root.config(background=beige)
+screenWidth = root.winfo_screenwidth()
+screenHeight = root.winfo_screenheight()
 
-centerWindow(root,width,height)
+titleFrame = Frame(root, bg=beige)
+titleFrame.grid()
 
-root.resizable(False,False)
+titleLabel = Label(
+    titleFrame,
+    font=(lucida, 30),
+    text="Client Search",
+    bg=beige,
+)
+titleLabel.grid(padx=10, pady=30)
 
-root.config(background='#FFEEDB')
+cup = Image.open("TeamTest\icons\cup.png")
+cup = cup.resize((80, 80))
+icon = CTkImage(light_image=cup, size=(80, 80))
+logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
+logo.place(x=screenWidth-100, y=20)
 
-frame=Frame(root,bg='#0d1f2d',border=100)
-mainframe=Frame(root)
-mainframe.grid()
+mainFrame = CTkFrame(
+    root,
+    fg_color=darkBlue,
+    bg_color=transparent,
+    width=800,
+    height=300,
+    corner_radius=20,
+)
 
-#top frame for title
-titleFrame=Frame(mainframe,width=width,height=height,bg='#FFEEDB')
-titleFrame.grid(row=0,column=0)
+searchFrame = CTkFrame(
+    mainFrame,
+    fg_color=transparent,
+    bg_color=transparent,
+    width=670,
+    height=70,
+)
 
-titleLabel=Label(titleFrame,font=('Lucida Handwriting',30),text='Client search',bg='#FFEEDB',border=10)
-titleLabel.grid(row=0,column=0,padx=10)
+searchLabel = CTkLabel(
+    searchFrame,
+    text="Name",
+    font=(lucida, 24),
+)
+searchLabel.grid(row=0, column=0, padx=(0, 0), pady=(0, 10))
 
-lbl_name=Label(frame,text='Name',bg='#0d1f2d',fg='#f6f4f6')
-lbl_name.grid(row=0,column=0)
+searchEntry = CTkEntry(
+    searchFrame,
+    width=670,
+    height=35,
+    corner_radius=10,
+    border_width=0,
+    fg_color=white,
+    text_color=black,
+    font=(normal, 16),
+    placeholder_text="Name",
+    placeholder_text_color=grey,
+)
+searchEntry.grid(row=1, column=0, columnspan=4, padx=100)
 
-txt_name=Text(frame,bg='#f6f4f6',width=65,height=2)
-txt_name.grid(row=0,column=1,padx=10,pady=10)
+searchFrame.grid(rowspan=1, columnspan=6, pady=(40, 0))
 
-btn_se=Button(frame,text='search',bg='#f6f4f6',width=10)
-btn_se.place(x=385,y=70)
+buttonAdd = CTkButton(
+    mainFrame,
+    width=170,
+    height=40,
+    text="Add Client",
+    hover=True,
+    hover_color=cafe,
+    text_color=black,
+    fg_color=white,
+    bg_color=transparent,
+    font=(lucida, 17),
+    corner_radius=16,
+)
+buttonAdd.grid(row=2, column=1, pady=40)
 
-btn_add=Button(frame,text='Add client',bg='#f6f4f6',width=10)
-btn_add.place(x=150,y=70)
+buttonSearch = CTkButton(
+    mainFrame,
+    width=170,
+    height=40,
+    text="Search",
+    hover=True,
+    hover_color=cafe,
+    text_color=black,
+    fg_color=white,
+    bg_color=transparent,
+    font=(lucida, 17),
+    corner_radius=16,
+)
+buttonSearch.grid(row=2, column=4, pady=40)
 
-frame.place(anchor='center',relx=.5,rely=.5 )
+mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
 root.mainloop()
