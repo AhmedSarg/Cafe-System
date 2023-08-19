@@ -35,6 +35,5 @@ def login_screen():
     splash.destroy()
     root = Tk()
     root.title("Login")
-    #Splash timer...
 splash.after(3000,login_screen)
 mainloop()
