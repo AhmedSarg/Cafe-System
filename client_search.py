@@ -18,7 +18,7 @@ titleFrame.grid()
 
 titleLabel = Label(
     titleFrame,
-    font=(lucida, 30),
+    font=(lucida, 40),
     text="Client Search",
     bg=beige,
 )
