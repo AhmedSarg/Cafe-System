@@ -2,9 +2,7 @@ import sqlite3
 
 
 def openConnection():
-    connection = sqlite3.connect(
-        "D:\Desktoss\Codes\GitHub\Repos\Cafe-System\database\cafe.db"
-    )
+    connection = sqlite3.connect("database\cafe.db")
     print("connection opened")
     return connection
 
