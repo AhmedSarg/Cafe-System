@@ -37,16 +37,16 @@ mainFrame = CTkFrame(
     corner_radius=20,
 )
 
-detailsframe=CTkFrame(
-    root,
-    fg_color=darkBlue,
+toolsFrame = CTkFrame(
+    mainFrame,
+    fg_color=transparent,
     bg_color=transparent,
-    corner_radius=20,
+    width=700,
+    height=200,
 )
 
-
 searchFrame = CTkFrame(
-    mainFrame,
+    toolsFrame,
     fg_color=transparent,
     bg_color=transparent,
     width=700,
@@ -74,10 +74,10 @@ searchEntry = CTkEntry(
 )
 searchEntry.grid(row=1, column=0, columnspan=80, padx=50)
 
-searchFrame.grid(rowspan=1, columnspan=8, pady=(40, 0))
+searchFrame.grid(row=0, column=0, rowspan=1, columnspan=8, pady=(40, 0))
 
 buttonAdd = CTkButton(
-    mainFrame,
+    toolsFrame,
     width=250,
     height=50,
     text="Add Client",
@@ -92,7 +92,7 @@ buttonAdd = CTkButton(
 buttonAdd.grid(row=2, column=2, pady=40)
 
 buttonSearch = CTkButton(
-    mainFrame,
+    toolsFrame,
     width=250,
     height=50,
     text="Search",
@@ -106,28 +106,65 @@ buttonSearch = CTkButton(
 )
 buttonSearch.grid(row=2, column=5, pady=40)
 
+toolsFrame.grid(row=0, column=0, padx=20)
 
+detailsframe=CTkFrame(
+    mainFrame,
+    fg_color=darkBlue,
+    bg_color=transparent,
+    corner_radius=20,
+)
 
 idLabel = CTkLabel(
     detailsframe,
     text="Id",
     font=(lucida, 20),
+    fg_color="#FF0000",
+    width=100,
 )
-idLabel.grid()
+idLabel.grid(row=0, column=1)
 
 nameLabel = CTkLabel(
     detailsframe,
     text="Name",
     font=(lucida, 20),
+    fg_color="#00FF00",
+    width=250,
 )
-nameLabel.grid()
+nameLabel.grid(row=0, column=2)
 
 addressLabel = CTkLabel(
     detailsframe,
     text="Address",
     font=(lucida, 20),
+    fg_color="#0000FF",
+    width=350,
 )
-addressLabel.grid()
+addressLabel.grid(row=0, column=3)
+
+showIdLabel = CTkLabel(
+    detailsframe,
+    text="1",
+    font=(normal, 20),
+    text_color=white,
+)
+showIdLabel.grid(row=1, column=1)
+
+shownameLabel = CTkLabel(
+    detailsframe,
+    text="Ahmed Essam Eliwa",
+    font=(normal, 20),
+    text_color=white
+)
+shownameLabel.grid(row=1, column=2)
+
+showaddressLabel = CTkLabel(
+    detailsframe,
+    text="EQalyoubia - Shoubra - Basos - B7b7",
+    font=(normal, 20),
+    text_color=white,
+)
+showaddressLabel.grid(row=1, column=3)
 
 buttonclose = CTkButton(
     detailsframe,
@@ -142,33 +179,9 @@ buttonclose = CTkButton(
     font=(lucida, 22),
     corner_radius=16,
 )
-buttonclose.grid()
+# buttonclose.grid()
 
-showIdLabel = CTkLabel(
-    detailsframe,
-    text=" ",
-    font=(lucida, 20),
-)
-showIdLabel.grid()
-
-shownameLabel = CTkLabel(
-    detailsframe,
-    text=" ",
-    font=(lucida, 20),
-)
-shownameLabel.grid()
-
-showaddressLabel = CTkLabel(
-    detailsframe,
-    text=" ",
-    font=(lucida, 20),
-)
-showaddressLabel.grid()
-
-
-
-detailsframe.place(anchor="center", relx=0.5, rely=0.5)
-
+detailsframe.grid(row = 1, column = 0, padx=20)
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
