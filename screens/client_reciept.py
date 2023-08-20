@@ -8,7 +8,7 @@ from PIL import ImageTk, Image
 
 
 root = Tk()
-root.title("client reciept")
+root.title("Client Reciept")
 root.state("zoomed")
 root.resizable(False, False)
 root.config(background=beige)
@@ -21,7 +21,7 @@ titleFrame.grid()
 titleLabel = Label(
     titleFrame,
     font=(lucida, 40),
-    text="client reciept",
+    text="Client Reciept",
     bg=beige,
 )
 titleLabel.grid(padx=10, pady=20)

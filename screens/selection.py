@@ -8,7 +8,7 @@ from tkinter import ttk
 from PIL import ImageTk, Image
 
 root = Tk()
-root.title("Select")
+root.title("Select Order Type")
 root.state("zoomed")
 root.resizable(False, False)
 root.config(background=beige)
@@ -24,7 +24,7 @@ logo.place(x=screenWidth - 100, y=20)
 titleLabel = Label(
     root,
     font=(lucida, 40),
-    text="Client Search",
+    text="Select Order Type",
     bg=beige,
 )
 titleLabel.place(x=10, y=30)

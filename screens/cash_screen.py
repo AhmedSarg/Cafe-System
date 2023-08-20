@@ -9,7 +9,7 @@ from PIL import ImageTk, Image
 
 
 root = Tk()
-root.title("Cash")
+root.title("Cash Calculate")
 root.state("zoomed")
 root.resizable(False, False)
 root.config(background=beige)
@@ -19,7 +19,7 @@ screenHeight = root.winfo_screenheight()
 titleLabel = Label(
     root,
     font=(lucida, 40),
-    text="Client Search",
+    text="Cash Calculate",
     bg=beige,
 )
 titleLabel.place(x=10, y=30)

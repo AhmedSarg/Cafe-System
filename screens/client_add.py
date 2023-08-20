@@ -18,7 +18,7 @@ screenHeight = root.winfo_screenheight()
 titleLabel = Label(
     root,
     font=(lucida, 40),
-    text="Client Search",
+    text="Client Add",
     bg=beige,
 )
 titleLabel.place(x=10, y=30)
