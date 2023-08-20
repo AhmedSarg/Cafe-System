@@ -16,16 +16,13 @@ root.config(background=beige)
 screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
 
-titleFrame = Frame(root, bg=beige)
-titleFrame.grid()
-
 titleLabel = Label(
-    titleFrame,
+    root,
     font=(lucida, 40),
-    text="Client add",
+    text="Client Search",
     bg=beige,
 )
-titleLabel.grid(padx=10, pady=30)
+titleLabel.place(x=10, y=30)
 
 cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))

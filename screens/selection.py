@@ -8,13 +8,12 @@ from tkinter import ttk
 from PIL import ImageTk, Image
 
 root = Tk()
-root.resizable(False, False)
 root.title("Select")
 root.state("zoomed")
+root.resizable(False, False)
+root.config(background=beige)
 screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
-
-root.configure(bg=beige)
 
 cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
@@ -22,16 +21,13 @@ icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
 logo.place(x=screenWidth - 100, y=20)
 
-titleFrame = Frame(root, bg=beige)
-titleFrame.grid()
-
 titleLabel = Label(
-    titleFrame,
+    root,
     font=(lucida, 40),
-    text="Select Order Type",
+    text="Client Search",
     bg=beige,
 )
-titleLabel.grid(padx=10, pady=30)
+titleLabel.place(x=10, y=30)
 
 buttonsFrame = CTkFrame(
     root, 

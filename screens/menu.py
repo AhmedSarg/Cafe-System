@@ -8,19 +8,18 @@ from tkinter.ttk import Progressbar
 from customtkinter import *
 from PIL import ImageTk, Image
 
-root_menu =Tk()
-root_menu.title('Menu')
-width = root_menu.winfo_screenwidth()
-height = root_menu.winfo_screenheight()
-root_menu.geometry('%dx%d+0+0' %(width,height)) 
-root_menu.resizable(False,False)
-root_menu.state("zoomed")
-root_menu.config(background=beige)
+root = Tk()
+root.title('Menu')
+root.state("zoomed")
+root.resizable(False,False)
+root.config(background=beige)
+width = root.winfo_screenwidth()
+height = root.winfo_screenheight()
 
 
 
 category_Frame = CTkFrame(
-    root_menu,
+    root,
     fg_color=darkBlue,
     bg_color=transparent,
     width=300,
@@ -107,10 +106,9 @@ cat_button5 = CTkButton(
     corner_radius=16,
 )
 cat_button5.grid(row=5,column=1, pady=50)
-##########================================================================================############
-##########================================================================================############
+
 quantity_Frame = CTkFrame(
-    root_menu,
+    root,
     fg_color=darkBlue,
     bg_color=transparent,
     width=width - 2,
@@ -165,7 +163,6 @@ min_button = CTkButton(
     corner_radius=20,
 )
 min_button.grid(row=1,column=5,padx=5)
-#min_button.place(x=585,y=19)
 
 lbl_quantityNum = Label(
     quantity_Frame, 
@@ -199,7 +196,7 @@ lbl_price = Label(
     fg=white,
 )
 lbl_price.grid(row=1,column=8,padx=(100,10),pady=22)
-################===============================########
+
 lbl_priceNum = Label(
     quantity_Frame, 
     text='Price',
@@ -208,7 +205,6 @@ lbl_priceNum = Label(
     fg=white,
 )
 lbl_priceNum.grid(row=1,column=9,padx=25,pady=22)
-################################################################
 
 next_button = CTkButton(
     quantity_Frame,
@@ -226,7 +222,7 @@ next_button.grid(row=1,column=10,padx=100)
  
 
 drink_Frame = CTkFrame(
-    root_menu,
+    root,
     fg_color=beige,
     bg_color=transparent,
     width=width-20,

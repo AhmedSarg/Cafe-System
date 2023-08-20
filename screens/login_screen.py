@@ -8,12 +8,13 @@ from customtkinter import *
 from PIL import ImageTk, Image
 
 root = Tk()
-root.resizable(False, False)
 root.title("Login")
 root.state("zoomed")
+root.resizable(False, False)
+root.config(background=darkBlue)
 screenWidth = root.winfo_screenwidth()
 screenHeight = root.winfo_screenheight()
-root.configure(bg=darkBlue)
+
 loginframe = Frame(width=screenWidth - 420, height=screenHeight - 98, background=beige)
 loginframe.place(x=500, y=18)
 label_title = Label(
