@@ -1,12 +1,14 @@
 from tkinter import *
-from values.colors import *
-from values.fonts import *
+import sys
+sys.path.insert(0, 'values')
+from colors import *
+from fonts import *
 from customtkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
 
 root = Tk()
-root.resizable(True, True)
+root.resizable(False, False)
 root.title("Select")
 root.state("zoomed")
 screenWidth = root.winfo_screenwidth()
