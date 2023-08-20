@@ -210,5 +210,4 @@ buttonsFrame.grid(row=3, column=0, padx=50, pady=(20, 40))
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
-
 root.mainloop()
