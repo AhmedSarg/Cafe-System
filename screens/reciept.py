@@ -38,7 +38,7 @@ title.place(x=15,y=20)
 
 price = Label(
     root,
-    text='Reciept :',
+    text='price :',
     fg=black,
     bg=beige,
       cursor='heart',
