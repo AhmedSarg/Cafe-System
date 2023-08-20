@@ -29,7 +29,25 @@ category_Frame.place(x=0, y=0)
 
 
 
-
+def button1():
+    cat_button3.destroy
+    cat_button2.destroy
+    cat_button4.destroy
+    cat_button5.destroy
+    drink_button1 = CTkButton(
+    drink_Frame,
+    width=210,
+    height=150,
+    text="Drink hot",
+    hover=True,
+    hover_color=darkBlue,
+    text_color=white,
+    fg_color=cafe,
+    bg_color=transparent,
+    font=(lucida, 25),
+    corner_radius=25,
+)
+    drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
 cat_button1 = CTkButton(
     category_Frame,
     width=170,
@@ -42,9 +60,29 @@ cat_button1 = CTkButton(
     bg_color=transparent,
     font=(lucida, 17),
     corner_radius=16,
+    command=button1
 )
 cat_button1.grid(row=1, column=1, padx=20, pady=33)
 
+def button2():
+    cat_button1.destroy
+    cat_button3.destroy
+    cat_button4.destroy
+    cat_button5.destroy
+    drink_button1 = CTkButton(
+    drink_Frame,
+    width=210,
+    height=150,
+    text="Drink cold",
+    hover=True,
+    hover_color=darkBlue,
+    text_color=white,
+    fg_color=cafe,
+    bg_color=transparent,
+    font=(lucida, 25),
+    corner_radius=25,
+)
+    drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
 cat_button2 = CTkButton(
     category_Frame,
     width=170,
@@ -57,9 +95,29 @@ cat_button2 = CTkButton(
     bg_color=transparent,
     font=(lucida, 17),
     corner_radius=16,
+    command=button2
 )
 cat_button2.grid(row=2,column=1, pady=33)
 
+def button3():
+    cat_button1.destroy
+    cat_button2.destroy
+    cat_button4.destroy
+    cat_button5.destroy
+    drink_button1 = CTkButton(
+    drink_Frame,
+    width=210,
+    height=150,
+    text="Drink main",
+    hover=True,
+    hover_color=darkBlue,
+    text_color=white,
+    fg_color=cafe,
+    bg_color=transparent,
+    font=(lucida, 25),
+    corner_radius=25,
+)
+    drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
 cat_button3 = CTkButton(
     category_Frame,
     width=170,
@@ -72,10 +130,29 @@ cat_button3 = CTkButton(
     bg_color=transparent,
     font=(lucida, 17),
     corner_radius=16,
+    command=button3
 )
 cat_button3.grid(row=3,column=1, pady=33)
 
-
+def button4():
+    cat_button1.destroy
+    cat_button2.destroy
+    cat_button3.destroy
+    cat_button5.destroy
+    drink_button1 = CTkButton(
+    drink_Frame,
+    width=210,
+    height=150,
+    text="Drink snakes",
+    hover=True,
+    hover_color=darkBlue,
+    text_color=white,
+    fg_color=cafe,
+    bg_color=transparent,
+    font=(lucida, 25),
+    corner_radius=25,
+)
+    drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
 cat_button4 = CTkButton(
     category_Frame,
     width=170,
@@ -88,10 +165,29 @@ cat_button4 = CTkButton(
     bg_color=transparent,
     font=(lucida, 17),
     corner_radius=16,
+    command=button4
 )
 cat_button4.grid(row=4,column=1, pady=33)
 
-
+def button5():
+    cat_button1.destroy
+    cat_button2.destroy
+    cat_button4.destroy
+    cat_button3.destroy
+    drink_button1 = CTkButton(
+    drink_Frame,
+    width=210,
+    height=150,
+    text="Drink extra",
+    hover=True,
+    hover_color=darkBlue,
+    text_color=white,
+    fg_color=cafe,
+    bg_color=transparent,
+    font=(lucida, 25),
+    corner_radius=25,
+)
+    drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
 cat_button5 = CTkButton(
     category_Frame,
     width=170,
@@ -104,6 +200,7 @@ cat_button5 = CTkButton(
     bg_color=transparent,
     font=(lucida, 17),
     corner_radius=16,
+    command=button5
 )
 cat_button5.grid(row=5,column=1, pady=50)
 
@@ -229,22 +326,6 @@ drink_Frame = CTkFrame(
     height=height-100,
 )
 drink_Frame.place(x=210, y=0)
-
-
-drink_button1 = CTkButton(
-    drink_Frame,
-    width=210,
-    height=150,
-    text="Drink Name",
-    hover=True,
-    hover_color=darkBlue,
-    text_color=white,
-    fg_color=cafe,
-    bg_color=transparent,
-    font=(lucida, 25),
-    corner_radius=25,
-)
-drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
 
 
 mainloop()
