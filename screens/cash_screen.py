@@ -198,13 +198,13 @@ buttonsTemp = CTkLabel(
     bg_color=transparent,
     fg_color=transparent,
 )
-buttonsTemp.grid(row=0, column=1, columnspan=8)
+buttonsTemp.grid(row=0, column=1, columnspan=9)
 
-buttonNext = CTkButton(
+buttonBack = CTkButton(
     buttonsFrame,
     width=150,
     height=50,
-    text="Next",
+    text="Back",
     hover=True,
     hover_color=cafe,
     text_color=black,
@@ -213,7 +213,7 @@ buttonNext = CTkButton(
     font=(lucida, 22),
     corner_radius=16,
 )
-buttonNext.grid(row=0, column=1)
+buttonBack.grid(row=0, column=1)
 
 buttonPrint = CTkButton(
     buttonsFrame,
@@ -228,7 +228,22 @@ buttonPrint = CTkButton(
     font=(lucida, 22),
     corner_radius=16,
 )
-buttonPrint.grid(row=0, column=8)
+buttonPrint.grid(row=0, column=5)
+
+buttonNext = CTkButton(
+    buttonsFrame,
+    width=150,
+    height=50,
+    text="Next",
+    hover=True,
+    hover_color=cafe,
+    text_color=black,
+    fg_color=white,
+    bg_color=transparent,
+    font=(lucida, 22),
+    corner_radius=16,
+)
+buttonNext.grid(row=0, column=9)
 
 buttonsFrame.grid(row=5, column=1, pady=(20, 40), padx=30)
 
