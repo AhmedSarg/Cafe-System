@@ -6,7 +6,7 @@ from PIL import ImageTk, Image
 
 
 root = Tk()
-root.title("Client Search")
+root.title("Client Add")
 root.state("zoomed")
 root.resizable(False, False)
 root.config(background=beige)
@@ -35,24 +35,28 @@ mainFrame = CTkFrame(
     root,
     fg_color=darkBlue,
     bg_color=transparent,
-    width=770,
-    height=450,
     corner_radius=20,
 )
 
-
-
-fnameLabel = CTkLabel(
+nameFrame = CTkFrame(
     mainFrame,
-    text="first Name",
-    font=(lucida, 20),
+    fg_color=transparent,
+    bg_color=transparent,
+    width=700,
+    height=70,
+    corner_radius=20
 )
 
-fnameLabel.place(x=30,y=50)
+fnameLabel = CTkLabel(
+    nameFrame,
+    text="First Name",
+    font=(lucida, 20),
+)
+fnameLabel.grid(row=0, column=0, padx=(0, 30))
 
 fnameEntry = CTkEntry(
-    mainFrame,
-    width=300,
+    nameFrame,
+    width=320,
     height=35,
     corner_radius=10,
     border_width=0,
@@ -62,19 +66,19 @@ fnameEntry = CTkEntry(
     placeholder_text="First Name",
     placeholder_text_color=grey,
 )
-fnameEntry.place(x=25,y=90)
+fnameEntry.grid(row=1, column=0, columnspan=40, padx=(0, 30))
 
 lnameLabel = CTkLabel(
-    mainFrame,
-    text="last Name",
+    nameFrame,
+    text="Last Name",
     font=(lucida, 20),
 )
 
-lnameLabel.place(x=430,y=50)
+lnameLabel.grid(row=0, column=40, padx=(30, 0))
 
 lnameEntry = CTkEntry(
-    mainFrame,
-    width=300,
+    nameFrame,
+    width=320,
     height=35,
     corner_radius=10,
     border_width=0,
@@ -84,18 +88,28 @@ lnameEntry = CTkEntry(
     placeholder_text="Last Name",
     placeholder_text_color=grey,
 )
-lnameEntry.place(x=430,y=90)
+lnameEntry.grid(row=1, column=40, columnspan=40, padx=(30, 0))
+
+nameFrame.grid(row=0, column=0, padx=50, pady=(40, 20))
+
+addressFrame = CTkFrame(
+    mainFrame,
+    fg_color=transparent,
+    bg_color=transparent,
+    width=700,
+    height=70,
+    corner_radius=10
+)
 
 AddressLabel = CTkLabel(
-    mainFrame,
+    addressFrame,
     text="Address",
     font=(lucida, 20),
 )
-
-AddressLabel.place(x=30,y=150)
+AddressLabel.grid(row=0, column=0)
 
 AddressEntry= CTkEntry(
-    mainFrame,
+    addressFrame,
     width=700,
     height=35,
     corner_radius=10,
@@ -106,20 +120,29 @@ AddressEntry= CTkEntry(
     placeholder_text="Address",
     placeholder_text_color=grey,
 )
+AddressEntry.grid(row=1, column=0, columnspan=80)
 
-AddressEntry.place(x=25,y=185)
+addressFrame.grid(row=1, column=0, padx=50, pady=20)
 
-
-phoneLabel = CTkLabel(
+phoneFrame = CTkFrame(
     mainFrame,
-    text="phone number",
-    font=(lucida, 20),
+    fg_color=transparent,
+    bg_color=transparent,
+    width=700,
+    height=70,
+    corner_radius=10
 )
 
-phoneLabel.place(x=30,y=240)
+phoneLabel = CTkLabel(
+    phoneFrame,
+    text="Phone Number",
+    font=(lucida, 20),
+)
+phoneLabel.grid(row=0, column=0)
+# phoneLabel.place(x=30,y=240)
 
 phoneEntry= CTkEntry(
-    mainFrame,
+    phoneFrame,
     width=700,
     height=35,
     corner_radius=10,
@@ -127,42 +150,64 @@ phoneEntry= CTkEntry(
     fg_color=white,
     text_color=black,
     font=(normal, 16),
-    placeholder_text="+20",
+    placeholder_text="Phone Number",
     placeholder_text_color=grey,
 )
+phoneEntry.grid(row=1, column=0, columnspan=80)
+# phoneEntry.place(x=25,y=275)
 
-phoneEntry.place(x=25,y=275)
+phoneFrame.grid(row=2, column=0, padx=50, pady=20)
 
+buttonsFrame = CTkFrame(
+    mainFrame,
+    fg_color=transparent,
+    bg_color=transparent,
+    width=700,
+    height=70,
+    corner_radius=10
+)
+
+tmp = CTkLabel(
+    buttonsFrame,
+    text="",
+    width=700,
+    height=0,
+    bg_color=transparent,
+    fg_color=transparent,
+)
+tmp.grid(row=0, column=0, columnspan=8)
 
 buttonback = CTkButton(
-    mainFrame,
-    width=170,
-    height=40,
+    buttonsFrame,
+    width=250,
+    height=50,
     text="Back",
     hover=True,
     hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=(lucida, 17),
+    font=(lucida, 22),
     corner_radius=16,
 )
-buttonback.place(x=70,y=360)
+buttonback.grid(row=0, column=1)
 
 buttonnext = CTkButton(
-    mainFrame,
-    width=170,
-    height=40,
+    buttonsFrame,
+    width=250,
+    height=50,
     text="Next",
     hover=True,
     hover_color=cafe,
     text_color=black,
     fg_color=white,
     bg_color=transparent,
-    font=(lucida, 17),
+    font=(lucida, 22),
     corner_radius=16,
 )
-buttonnext.place(x=470,y=360)
+buttonnext.grid(row=0, column=6)
+
+buttonsFrame.grid(row=3, column=0, padx=50, pady=(20, 40))
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
