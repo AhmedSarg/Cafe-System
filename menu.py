@@ -16,11 +16,7 @@ root_menu.resizable(False,False)
 root_menu.state("zoomed")
 root_menu.config(background=beige)
 
-cup = Image.open("icons/cup.png")
-cup = cup.resize((80, 80))
-icon = CTkImage(light_image=cup, size=(50, 50))
-logo = CTkLabel(root_menu, image=icon, bg_color=transparent, text="")
-logo.place(x=width-60, y=6)
+
 
 category_Frame = CTkFrame(
     root_menu,
@@ -33,11 +29,6 @@ category_Frame.place(x=0, y=0)
 
 
 
-cup = Image.open("icons/cup.png")
-cup = cup.resize((80, 80))
-icon = CTkImage(light_image=cup, size=(50, 50))
-logo = CTkLabel(root_menu, image=icon, bg_color=transparent, text="")
-logo.place(x=width-60, y=6)
 
 cat_button1 = CTkButton(
     category_Frame,
@@ -154,11 +145,109 @@ lbl_quantity = Label(
     bg=darkBlue,
     fg=white,
 )
-lbl_quantity.grid(row=1,column=3,padx=50,pady=22)
+lbl_quantity.grid(row=1,column=3,padx=(100,10),pady=22)
 
-minus = Image.open("icons/minus.png")
-minus = minus.resize((80, 80))
-icon = CTkImage(light_image=minus, size=(50, 50))
-logo = CTkLabel(quantity_Frame, image=icon, bg_color=transparent, text="")
-logo.grid(row=1,column=4)
+#minus = ImageTk.PhotoImage(Image.open('icons/minus.png'))
+#minus = minus.resize((80, 80))
+
+
+min_button = CTkButton(
+    quantity_Frame,
+    width=50,
+    height=50,
+    text="-",
+    text_color=darkBlue,
+    hover_color=cafe,
+    fg_color=white,
+    bg_color=darkBlue,
+    font=(normal, 30,'bold'),
+    corner_radius=20,
+)
+min_button.grid(row=1,column=5,padx=5)
+#min_button.place(x=585,y=19)
+
+lbl_quantityNum = Label(
+    quantity_Frame, 
+    text=' 5 ',
+    font=(lucida, 20),
+    bg=darkBlue,
+    fg=white,
+    
+)
+lbl_quantityNum.grid(row=1,column=6,padx=30,pady=22)
+
+plus_button = CTkButton(
+    quantity_Frame,
+    width=50,
+    height=50,
+    text="+",
+    text_color=darkBlue,
+    hover_color=cafe,
+    fg_color=white,
+    bg_color=darkBlue,
+    font=(normal, 30,'bold'),
+    corner_radius=20,
+)
+plus_button.grid(row=1,column=7,padx=5)
+
+lbl_price = Label(
+    quantity_Frame, 
+    text='Total Price :  ',
+    font=(lucida, 20),
+    bg=darkBlue,
+    fg=white,
+)
+lbl_price.grid(row=1,column=8,padx=(100,10),pady=22)
+################===============================########
+lbl_priceNum = Label(
+    quantity_Frame, 
+    text='Price',
+    font=(lucida, 20),
+    bg=darkBlue,
+    fg=white,
+)
+lbl_priceNum.grid(row=1,column=9,padx=25,pady=22)
+################################################################
+
+next_button = CTkButton(
+    quantity_Frame,
+    width=50,
+    height=50,
+    text="→",
+    text_color=darkBlue,
+    hover_color=cafe,
+    fg_color=white,
+    bg_color=darkBlue,
+    font=(normal, 30,'bold'),
+    corner_radius=20,
+)
+next_button.grid(row=1,column=10,padx=100)
+ 
+
+drink_Frame = CTkFrame(
+    root_menu,
+    fg_color=beige,
+    bg_color=transparent,
+    width=width-20,
+    height=height-100,
+)
+drink_Frame.place(x=210, y=0)
+
+
+drink_button1 = CTkButton(
+    drink_Frame,
+    width=210,
+    height=150,
+    text="Drink Name",
+    hover=True,
+    hover_color=darkBlue,
+    text_color=white,
+    fg_color=cafe,
+    bg_color=transparent,
+    font=(lucida, 25),
+    corner_radius=25,
+)
+drink_button1.grid(row=1,column=3, padx=50 ,pady=33)
+
+
 mainloop()
