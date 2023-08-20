@@ -1,13 +1,20 @@
 from tkinter import *
 import sys
+from tkinter import messagebox
+
 sys.path.insert(0, "values")
+sys.path.insert(0, "classes")
+sys.path.insert(0, "database")
 from colors import *
 from fonts import *
+from client import *
+from db_controller import *
 from customtkinter import *
 from PIL import ImageTk, Image
 
 
 root = Tk()
+connection = openConnection()
 root.title("Client Add")
 root.state("zoomed")
 root.resizable(False, False)
@@ -29,7 +36,6 @@ icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
 logo.place(x=screenWidth - 100, y=20)
 
-
 mainFrame = CTkFrame(
     root,
     fg_color=darkBlue,
@@ -43,53 +49,31 @@ nameFrame = CTkFrame(
     bg_color=transparent,
     width=700,
     height=70,
-    corner_radius=20,
+    corner_radius=10,
 )
 
-fnameLabel = CTkLabel(
+nameLabel = CTkLabel(
     nameFrame,
-    text="First Name",
+    text="Name",
     font=(lucida, 20),
 )
-fnameLabel.grid(row=0, column=0, padx=(0, 30))
+nameLabel.grid(row=0, column=0)
 
-fnameEntry = CTkEntry(
+nameEntry = CTkEntry(
     nameFrame,
-    width=320,
+    width=700,
     height=35,
     corner_radius=10,
     border_width=0,
     fg_color=white,
     text_color=black,
     font=(normal, 16),
-    placeholder_text="First Name",
+    placeholder_text="Name",
     placeholder_text_color=grey,
 )
-fnameEntry.grid(row=1, column=0, columnspan=40, padx=(0, 30))
+nameEntry.grid(row=1, column=0, columnspan=80)
 
-lnameLabel = CTkLabel(
-    nameFrame,
-    text="Last Name",
-    font=(lucida, 20),
-)
-
-lnameLabel.grid(row=0, column=40, padx=(30, 0))
-
-lnameEntry = CTkEntry(
-    nameFrame,
-    width=320,
-    height=35,
-    corner_radius=10,
-    border_width=0,
-    fg_color=white,
-    text_color=black,
-    font=(normal, 16),
-    placeholder_text="Last Name",
-    placeholder_text_color=grey,
-)
-lnameEntry.grid(row=1, column=40, columnspan=40, padx=(30, 0))
-
-nameFrame.grid(row=0, column=0, padx=50, pady=(40, 20))
+nameFrame.grid(row=0, column=0, padx=50, pady=20)
 
 addressFrame = CTkFrame(
     mainFrame,
@@ -100,14 +84,14 @@ addressFrame = CTkFrame(
     corner_radius=10,
 )
 
-AddressLabel = CTkLabel(
+addressLabel = CTkLabel(
     addressFrame,
     text="Address",
     font=(lucida, 20),
 )
-AddressLabel.grid(row=0, column=0)
+addressLabel.grid(row=0, column=0)
 
-AddressEntry = CTkEntry(
+addressEntry = CTkEntry(
     addressFrame,
     width=700,
     height=35,
@@ -119,7 +103,7 @@ AddressEntry = CTkEntry(
     placeholder_text="Address",
     placeholder_text_color=grey,
 )
-AddressEntry.grid(row=1, column=0, columnspan=80)
+addressEntry.grid(row=1, column=0, columnspan=80)
 
 addressFrame.grid(row=1, column=0, padx=50, pady=20)
 
@@ -138,7 +122,6 @@ phoneLabel = CTkLabel(
     font=(lucida, 20),
 )
 phoneLabel.grid(row=0, column=0)
-# phoneLabel.place(x=30,y=240)
 
 phoneEntry = CTkEntry(
     phoneFrame,
@@ -153,7 +136,6 @@ phoneEntry = CTkEntry(
     placeholder_text_color=grey,
 )
 phoneEntry.grid(row=1, column=0, columnspan=80)
-# phoneEntry.place(x=25,y=275)
 
 phoneFrame.grid(row=2, column=0, padx=50, pady=20)
 
@@ -191,6 +173,23 @@ buttonback = CTkButton(
 )
 buttonback.grid(row=0, column=1)
 
+def nextClick():
+    name = nameEntry.get()
+    address = addressEntry.get()
+    phone = phoneEntry.get()
+    if name.isspace() or len(name) == 0:
+        messagebox.showerror("Failed","Name field is empty")
+    elif address.isspace() or len(address) == 0:
+        messagebox.showerror("Failed","Address field is empty")
+    elif phone.isspace() or not phone.isdigit() or len(phone) == 0:
+        messagebox.showerror("Failed","Phone Number is not valid")
+    else:
+        try:
+            addClient(connection, Client(name=name.lower(), address=address.lower(), phone=phone))
+            messagebox.showinfo("Success","Client added to database successfully")
+        except:
+            messagebox.showerror("Failed","Can't add client to database")
+
 buttonNext = CTkButton(
     buttonsFrame,
     width=250,
@@ -203,11 +202,14 @@ buttonNext = CTkButton(
     bg_color=transparent,
     font=(lucida, 22),
     corner_radius=16,
+    command=nextClick
 )
 buttonNext.grid(row=0, column=6)
+
 
 buttonsFrame.grid(row=3, column=0, padx=50, pady=(20, 40))
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
 root.mainloop()
+endConnection(connection=connection)

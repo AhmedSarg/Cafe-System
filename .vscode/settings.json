@@ -4,6 +4,8 @@
     },
     "python.formatting.provider": "none",
     "python.analysis.extraPaths": [
-        "./values"
+        "./values",
+        "./classes",
+        "./database"
     ]
 }
