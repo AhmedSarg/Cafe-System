@@ -117,18 +117,34 @@ number_buttom = Label(
       )
 number_buttom.place(x=screenWidth-500,y=550)
 btn_next = CTkButton(
-    root,
-    width=200,
+   root,
+    width=250,
     height=50,
     text="Next",
     hover=True,
     hover_color=cafe,
-    text_color=black,
-    fg_color=white,
-    bg_color=white,
-    font=(lucida, 17),
+    text_color=white,
+    fg_color=darkBlue,
+    bg_color=transparent,
+    font=(lucida, 22),
     corner_radius=16,
-    border_width=2
 )
 btn_next.place(x=750,y=700)
+
+btn_Print = CTkButton(
+   root,
+    width=175,
+    height=50,
+    text="Print",
+    hover=True,
+    hover_color=cafe,
+    text_color=white,
+    fg_color=darkBlue,
+    bg_color=transparent,
+    font=(lucida, 22),
+    corner_radius=16,
+)
+btn_Print.place(x=780,y=630)
+
+
 root.mainloop()
