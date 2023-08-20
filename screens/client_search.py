@@ -1,6 +1,9 @@
 from tkinter import *
-from values.colors import *
-from values.fonts import *
+import sys
+
+sys.path.insert(0, "values")
+from colors import *
+from fonts import *
 from customtkinter import *
 from PIL import ImageTk, Image
 
@@ -28,7 +31,7 @@ cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
-logo.place(x=screenWidth-100, y=20)
+logo.place(x=screenWidth - 100, y=20)
 
 mainFrame = CTkFrame(
     root,
@@ -58,7 +61,7 @@ searchLabel = CTkLabel(
     text="Phone Number",
     font=(lucida, 24),
 )
-searchLabel.grid(row=0, column=0,padx=(50, 0), pady=(0, 10))
+searchLabel.grid(row=0, column=0, padx=(50, 0), pady=(0, 10))
 
 searchEntry = CTkEntry(
     searchFrame,
@@ -108,7 +111,7 @@ buttonSearch.grid(row=2, column=5, pady=40)
 
 toolsFrame.grid(row=0, column=0, padx=20)
 
-detailsframe=CTkFrame(
+detailsframe = CTkFrame(
     mainFrame,
     fg_color=darkBlue,
     bg_color=transparent,
@@ -151,10 +154,7 @@ showIdLabel = CTkLabel(
 showIdLabel.grid(row=1, column=1)
 
 shownameLabel = CTkLabel(
-    detailsframe,
-    text="Ahmed Essam Eliwa",
-    font=(normal, 20),
-    text_color=white
+    detailsframe, text="Ahmed Essam Eliwa", font=(normal, 20), text_color=white
 )
 shownameLabel.grid(row=1, column=2)
 
@@ -181,7 +181,7 @@ buttonclose = CTkButton(
 )
 # buttonclose.grid()
 
-detailsframe.grid(row = 1, column = 0, padx=20)
+detailsframe.grid(row=1, column=0, padx=20)
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 

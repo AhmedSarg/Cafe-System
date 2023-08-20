@@ -1,10 +1,11 @@
 from tkinter import *
-from values.colors import *
 from tkinter import ttk
 from tkinter.ttk import Progressbar
 from customtkinter import *
-from values.colors import *
-from values.fonts import *
+import sys
+sys.path.insert(0, 'values')
+from fonts import *
+from colors import *
 from PIL import ImageTk, Image
 import time
 import os

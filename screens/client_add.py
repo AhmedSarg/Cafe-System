@@ -1,6 +1,9 @@
 from tkinter import *
-from values.colors import *
-from values.fonts import *
+import sys
+
+sys.path.insert(0, "values")
+from colors import *
+from fonts import *
 from customtkinter import *
 from PIL import ImageTk, Image
 
@@ -28,7 +31,7 @@ cup = Image.open("icons\cup.png")
 cup = cup.resize((80, 80))
 icon = CTkImage(light_image=cup, size=(80, 80))
 logo = CTkLabel(root, image=icon, bg_color=transparent, text="")
-logo.place(x=screenWidth-100, y=20)
+logo.place(x=screenWidth - 100, y=20)
 
 
 mainFrame = CTkFrame(
@@ -44,7 +47,7 @@ nameFrame = CTkFrame(
     bg_color=transparent,
     width=700,
     height=70,
-    corner_radius=20
+    corner_radius=20,
 )
 
 fnameLabel = CTkLabel(
@@ -98,7 +101,7 @@ addressFrame = CTkFrame(
     bg_color=transparent,
     width=700,
     height=70,
-    corner_radius=10
+    corner_radius=10,
 )
 
 AddressLabel = CTkLabel(
@@ -108,7 +111,7 @@ AddressLabel = CTkLabel(
 )
 AddressLabel.grid(row=0, column=0)
 
-AddressEntry= CTkEntry(
+AddressEntry = CTkEntry(
     addressFrame,
     width=700,
     height=35,
@@ -130,7 +133,7 @@ phoneFrame = CTkFrame(
     bg_color=transparent,
     width=700,
     height=70,
-    corner_radius=10
+    corner_radius=10,
 )
 
 phoneLabel = CTkLabel(
@@ -141,7 +144,7 @@ phoneLabel = CTkLabel(
 phoneLabel.grid(row=0, column=0)
 # phoneLabel.place(x=30,y=240)
 
-phoneEntry= CTkEntry(
+phoneEntry = CTkEntry(
     phoneFrame,
     width=700,
     height=35,
@@ -164,7 +167,7 @@ buttonsFrame = CTkFrame(
     bg_color=transparent,
     width=700,
     height=70,
-    corner_radius=10
+    corner_radius=10,
 )
 
 tmp = CTkLabel(

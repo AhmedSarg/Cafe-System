@@ -1,6 +1,8 @@
 from tkinter import *
-from values.colors import *
-from values.fonts import *
+import sys
+sys.path.insert(0, 'values')
+from colors import *
+from fonts import *
 from customtkinter import *
 from PIL import ImageTk, Image
 

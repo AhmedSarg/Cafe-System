@@ -1,10 +1,11 @@
+import sys
+sys.path.insert(0, 'values')
+from colors import *
+from fonts import *
 from tkinter import *
-from values.colors import *
 from tkinter import ttk
 from tkinter.ttk import Progressbar
 from customtkinter import *
-from values.colors import *
-from values.fonts import *
 from PIL import ImageTk, Image
 
 root_menu =Tk()
