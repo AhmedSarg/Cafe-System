@@ -191,7 +191,7 @@ buttonback = CTkButton(
 )
 buttonback.grid(row=0, column=1)
 
-buttonnext = CTkButton(
+buttonNext = CTkButton(
     buttonsFrame,
     width=250,
     height=50,
@@ -204,7 +204,7 @@ buttonnext = CTkButton(
     font=(lucida, 22),
     corner_radius=16,
 )
-buttonnext.grid(row=0, column=6)
+buttonNext.grid(row=0, column=6)
 
 buttonsFrame.grid(row=3, column=0, padx=50, pady=(20, 40))
 
