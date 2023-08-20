@@ -30,6 +30,10 @@ category_Frame.place(x=0, y=0)
 
 
 def button1():
+    cat_button3.destroy
+    cat_button2.destroy
+    cat_button4.destroy
+    cat_button5.destroy
     drink_button1 = CTkButton(
     drink_Frame,
     width=210,
@@ -61,6 +65,10 @@ cat_button1 = CTkButton(
 cat_button1.grid(row=1, column=1, padx=20, pady=33)
 
 def button2():
+    cat_button1.destroy
+    cat_button3.destroy
+    cat_button4.destroy
+    cat_button5.destroy
     drink_button1 = CTkButton(
     drink_Frame,
     width=210,
@@ -92,6 +100,10 @@ cat_button2 = CTkButton(
 cat_button2.grid(row=2,column=1, pady=33)
 
 def button3():
+    cat_button1.destroy
+    cat_button2.destroy
+    cat_button4.destroy
+    cat_button5.destroy
     drink_button1 = CTkButton(
     drink_Frame,
     width=210,
@@ -123,6 +135,10 @@ cat_button3 = CTkButton(
 cat_button3.grid(row=3,column=1, pady=33)
 
 def button4():
+    cat_button1.destroy
+    cat_button2.destroy
+    cat_button3.destroy
+    cat_button5.destroy
     drink_button1 = CTkButton(
     drink_Frame,
     width=210,
@@ -154,6 +170,10 @@ cat_button4 = CTkButton(
 cat_button4.grid(row=4,column=1, pady=33)
 
 def button5():
+    cat_button1.destroy
+    cat_button2.destroy
+    cat_button4.destroy
+    cat_button3.destroy
     drink_button1 = CTkButton(
     drink_Frame,
     width=210,
