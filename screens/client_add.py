@@ -1,6 +1,5 @@
 from tkinter import *
 import sys
-
 sys.path.insert(0, "values")
 from colors import *
 from fonts import *
