@@ -122,66 +122,76 @@ idLabel = CTkLabel(
     detailsframe,
     text="Id",
     font=(lucida, 20),
-    fg_color="#FF0000",
-    width=100,
+    width=40,
 )
-idLabel.grid(row=0, column=1)
+idLabel.grid(row=0, column=1, pady=(20, 0))
 
 nameLabel = CTkLabel(
     detailsframe,
     text="Name",
     font=(lucida, 20),
-    fg_color="#00FF00",
-    width=250,
+    width=240,
 )
-nameLabel.grid(row=0, column=2)
+nameLabel.grid(row=0, column=2, pady=(20, 0))
 
 addressLabel = CTkLabel(
     detailsframe,
     text="Address",
     font=(lucida, 20),
-    fg_color="#0000FF",
-    width=350,
+    width=340,
 )
-addressLabel.grid(row=0, column=3)
+addressLabel.grid(row=0, column=3, pady=(20, 0))
 
-showIdLabel = CTkLabel(
+buttonTempLabel = CTkLabel(
     detailsframe,
-    text="1",
-    font=(normal, 20),
-    text_color=white,
-)
-showIdLabel.grid(row=1, column=1)
-
-shownameLabel = CTkLabel(
-    detailsframe, text="Ahmed Essam Eliwa", font=(normal, 20), text_color=white
-)
-shownameLabel.grid(row=1, column=2)
-
-showaddressLabel = CTkLabel(
-    detailsframe,
-    text="EQalyoubia - Shoubra - Basos - B7b7",
-    font=(normal, 20),
-    text_color=white,
-)
-showaddressLabel.grid(row=1, column=3)
-
-buttonclose = CTkButton(
-    detailsframe,
-    width=75,
-    height=50,
-    text="close",
-    hover=True,
-    hover_color=cafe,
-    text_color=black,
-    fg_color=white,
+    text="",
+    font=(lucida, 20),
+    fg_color=transparent,
     bg_color=transparent,
-    font=(lucida, 22),
-    corner_radius=16,
+    width=80,
 )
-# buttonclose.grid()
+buttonTempLabel.grid(row=0, column=4, pady=(20, 0))
 
-detailsframe.grid(row=1, column=0, padx=20)
+# showIdLabel = CTkLabel(
+#     detailsframe,
+#     text="1",
+#     font=(normal, 20),
+#     text_color=white,
+# )
+# showIdLabel.grid(row=1, column=1)
+
+# showNameLabel = CTkLabel(
+#     detailsframe,
+#     text="Ahmed Essam Eliwa",
+#     font=(normal, 16),
+#     text_color=white,
+# )
+# showNameLabel.grid(row=1, column=2)
+
+# showaddressLabel = CTkLabel(
+#     detailsframe,
+#     text="EQalyoubia - Shoubra - Basos - B7b7",
+#     font=(normal, 16),
+#     text_color=white,
+# )
+# showaddressLabel.grid(row=1, column=3)
+
+# buttonSelect = CTkButton(
+#     detailsframe,
+#     width=60,
+#     height=30,
+#     text="Select",
+#     hover=True,
+#     hover_color=cafe,
+#     text_color=black,
+#     fg_color=white,
+#     bg_color=transparent,
+#     font=(lucida, 16),
+#     corner_radius=10,
+# )
+# buttonSelect.grid(row=1, column=4, padx=20)
+
+detailsframe.grid(row=1, column=0, padx=(20, 0), pady=(0, 40))
 
 mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
