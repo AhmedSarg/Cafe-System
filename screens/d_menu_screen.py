@@ -1,16 +1,20 @@
 import sys
 
 sys.path.insert(0, "values")
+sys.path.insert(0, "database")
 from colors import *
 from fonts import *
 from tkinter import *
-from tkinter import ttk
-from tkinter.ttk import Progressbar
 from customtkinter import *
+from db_controller import *
 
 
 class MenuScreen:
     def __init__(self, selection):
+        connection = openConnection()
+
+        self.selectedProduct = ""
+
         self.root = Tk()
         self.root.title("Menu")
         self.root.state("zoomed")
@@ -19,40 +23,32 @@ class MenuScreen:
         width = self.root.winfo_screenwidth()
         height = self.root.winfo_screenheight()
 
-        category_Frame = CTkFrame(
+
+
+
+
+
+
+
+
+
+        categoryFrame = CTkFrame(
             self.root,
             fg_color=darkBlue,
             bg_color=transparent,
-            width=300,
-            height=height,
+            corner_radius=0
         )
-        category_Frame.place(x=0, y=0)
+        categoryFrame.place(x=0, y=0)
 
-        def button1():
-            cat_button2.destroy()
-            cat_button3.destroy()
-            cat_button4.destroy()
-            cat_button5.destroy()
-            drink_button1 = CTkButton(
-                drink_Frame,
-                width=210,
-                height=150,
-                text="Drink Hot",
-                hover=True,
-                hover_color=darkBlue,
-                text_color=white,
-                fg_color=cafe,
-                bg_color=transparent,
-                font=(lucida, 25),
-                corner_radius=25,
-            )
-            drink_button1.grid(row=1, column=3, padx=50, pady=33)
+        def hotDrinksCategoryValue():
+            getMenu(connection, "Hot Drinks")
 
-        cat_button1 = CTkButton(
-            category_Frame,
+
+        hotDrinksCategoryButton = CTkButton(
+            categoryFrame,
             width=170,
             height=80,
-            text="HOT DRINKS",
+            text="Hot Drinks",
             hover=True,
             hover_color=cafe,
             text_color=black,
@@ -60,35 +56,18 @@ class MenuScreen:
             bg_color=transparent,
             font=(lucida, 17),
             corner_radius=16,
-            command=button1,
+            command=hotDrinksCategoryValue
         )
-        cat_button1.grid(row=1, column=1, padx=20, pady=33)
+        hotDrinksCategoryButton.grid(row=1, column=0, pady=((height - 170) / 20), padx=15)
 
-        def button2():
-            cat_button1.destroy()
-            cat_button3.destroy()
-            cat_button4.destroy()
-            cat_button5.destroy()
-            drink_button1 = CTkButton(
-                drink_Frame,
-                width=210,
-                height=150,
-                text="Drink cold",
-                hover=True,
-                hover_color=darkBlue,
-                text_color=white,
-                fg_color=cafe,
-                bg_color=transparent,
-                font=(lucida, 25),
-                corner_radius=25,
-            )
-            drink_button1.grid(row=1, column=3, padx=50, pady=33)
+        def coffeeCategoryValue():
+            getMenu(connection, "Coffee")
 
-        cat_button2 = CTkButton(
-            category_Frame,
+        coffeeCategoryButton = CTkButton(
+            categoryFrame,
             width=170,
             height=80,
-            text="COLD DRINKS",
+            text="Coffee",
             hover=True,
             hover_color=cafe,
             text_color=black,
@@ -96,35 +75,18 @@ class MenuScreen:
             bg_color=transparent,
             font=(lucida, 17),
             corner_radius=16,
-            command=button2,
+            command=coffeeCategoryValue
         )
-        cat_button2.grid(row=2, column=1, pady=33)
+        coffeeCategoryButton.grid(row=2, column=0, pady=((height - 170) / 20), padx=15)
 
-        def button3():
-            cat_button1.destroy
-            cat_button2.destroy
-            cat_button4.destroy
-            cat_button5.destroy
-            drink_button1 = CTkButton(
-                drink_Frame,
-                width=210,
-                height=150,
-                text="Drink main",
-                hover=True,
-                hover_color=darkBlue,
-                text_color=white,
-                fg_color=cafe,
-                bg_color=transparent,
-                font=(lucida, 25),
-                corner_radius=25,
-            )
-            drink_button1.grid(row=1, column=3, padx=50, pady=33)
+        def iceCreamCategoryValue():
+            getMenu(connection, "Ice Cream")
 
-        cat_button3 = CTkButton(
-            category_Frame,
+        IceCreamCategoryButton = CTkButton(
+            categoryFrame,
             width=170,
             height=80,
-            text="MAIN DISHES",
+            text="Ice Creams",
             hover=True,
             hover_color=cafe,
             text_color=black,
@@ -132,35 +94,18 @@ class MenuScreen:
             bg_color=transparent,
             font=(lucida, 17),
             corner_radius=16,
-            command=button3,
+            command=iceCreamCategoryValue
         )
-        cat_button3.grid(row=3, column=1, pady=33)
+        IceCreamCategoryButton.grid(row=3, column=0, pady=((height - 170) / 20), padx=15)
 
-        def button4():
-            cat_button1.destroy()
-            cat_button2.destroy()
-            cat_button3.destroy()
-            cat_button5.destroy()
-            drink_button1 = CTkButton(
-                drink_Frame,
-                width=210,
-                height=150,
-                text="Drink snakes",
-                hover=True,
-                hover_color=darkBlue,
-                text_color=white,
-                fg_color=cafe,
-                bg_color=transparent,
-                font=(lucida, 25),
-                corner_radius=25,
-            )
-            drink_button1.grid(row=1, column=3, padx=50, pady=33)
+        def dessertCategoryValue():
+            getMenu(connection, "Dessert")
 
-        cat_button4 = CTkButton(
-            category_Frame,
+        DessertCategoryButton = CTkButton(
+            categoryFrame,
             width=170,
             height=80,
-            text="SNAKES",
+            text="Desserts",
             hover=True,
             hover_color=cafe,
             text_color=black,
@@ -168,35 +113,18 @@ class MenuScreen:
             bg_color=transparent,
             font=(lucida, 17),
             corner_radius=16,
-            command=button4,
+            command=dessertCategoryValue
         )
-        cat_button4.grid(row=4, column=1, pady=33)
+        DessertCategoryButton.grid(row=4, column=0, pady=((height - 170) / 20), padx=15)
 
-        def button5():
-            cat_button1.destroy()
-            cat_button2.destroy()
-            cat_button4.destroy()
-            cat_button3.destroy()
-            drink_button1 = CTkButton(
-                drink_Frame,
-                width=210,
-                height=150,
-                text="Drink extra",
-                hover=True,
-                hover_color=darkBlue,
-                text_color=white,
-                fg_color=cafe,
-                bg_color=transparent,
-                font=(lucida, 25),
-                corner_radius=25,
-            )
-            drink_button1.grid(row=1, column=3, padx=50, pady=33)
+        def softDrinksCategoryValue():
+            getMenu(connection, "Soft Drinks")
 
-        cat_button5 = CTkButton(
-            category_Frame,
+        softDrinksCategoryButton = CTkButton(
+            categoryFrame,
             width=170,
             height=80,
-            text="EXTRAS",
+            text="Soft Drinks",
             hover=True,
             hover_color=cafe,
             text_color=black,
@@ -204,29 +132,79 @@ class MenuScreen:
             bg_color=transparent,
             font=(lucida, 17),
             corner_radius=16,
-            command=button5,
+            command=softDrinksCategoryValue
         )
-        cat_button5.grid(row=5, column=1, pady=50)
+        softDrinksCategoryButton.grid(row=5, column=0, pady=((height - 170) / 20), padx=15)
+
+
+
+
+
+
+
+
+
+
+
+
+        productFrame = CTkFrame(
+            self.root,
+            fg_color=beige,
+            bg_color=transparent,
+        )
+        productFrame.place(x=230, y=30)
+
+        def testOnClick():
+            print(self.selectedCategory)
+
+        productItem = CTkButton(
+            productFrame,
+            width=240,
+            height=150,
+            text="Drink Hot",
+            hover=True,
+            hover_color=darkBlue,
+            text_color=white,
+            fg_color=cafe,
+            bg_color=transparent,
+            font=(lucida, 25),
+            corner_radius=25,
+            command=testOnClick
+        )
+        productItem._text_label.configure(wraplength=240)
+        productItem.grid(row=1, column=1)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         quantity_Frame = CTkFrame(
             self.root,
             fg_color=darkBlue,
             bg_color=transparent,
-            width=width - 2,
-            height=80,
             corner_radius=0,
         )
-        # quantity_Frame.place(x=2, y=750)
         quantity_Frame.pack(side="bottom")
 
-        lbl_drink = Label(
+        lbl_drink = CTkLabel(
             quantity_Frame,
             text="Drink : ",
             font=(lucida, 20),
-            bg=darkBlue,
-            fg=white,
+            text_color=white,
+            height=100,
+            bg_color=darkBlue,
+            fg_color=darkBlue,
         )
-        lbl_drink.grid(row=1, column=1, padx=10, pady=22)
+        lbl_drink.grid(row=1, column=1, padx=10)
 
         lbl_drinkName = Label(
             quantity_Frame,
@@ -245,9 +223,6 @@ class MenuScreen:
             fg=white,
         )
         lbl_quantity.grid(row=1, column=3, padx=(100, 10), pady=22)
-
-        # minus = ImageTk.PhotoImage(Image.open('icons/minus.png'))
-        # minus = minus.resize((80, 80))
 
         min_button = CTkButton(
             quantity_Frame,
@@ -329,13 +304,7 @@ class MenuScreen:
         )
         next_button.grid(row=1, column=10, padx=100)
 
-        drink_Frame = CTkFrame(
-            self.root,
-            fg_color=beige,
-            bg_color=transparent,
-            width=width - 20,
-            height=height - 100,
-        )
-        drink_Frame.place(x=210, y=0)
-
         self.root.mainloop()
+        endConnection(connection)
+
+MenuScreen("cafe")
