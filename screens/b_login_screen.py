@@ -105,6 +105,7 @@ class LoginScreen:
             font=(normal, 20),
             placeholder_text="Password",
             placeholder_text_color=grey,
+            show='*'
         )
         passwordEntry.grid(row=2, column=0, columnspan=80)
 
