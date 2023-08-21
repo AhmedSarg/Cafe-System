@@ -1,5 +1,5 @@
 from a_splash_screen import SplashScreen
-from b_login_screen import LoginScreen
+
 import sys
 
 sys.path.insert(0, "values")
@@ -14,6 +14,7 @@ splashScreen = SplashScreen()
 
 def splashToLogin():
     splashScreen.root.destroy()
+    from b_login_screen import LoginScreen
     LoginScreen()
 
 

@@ -8,7 +8,6 @@ from colors import *
 from fonts import *
 from customtkinter import *
 from PIL import Image
-from c_selection_screen import SelectionScreen
 
 
 class LoginScreen:
@@ -116,6 +115,7 @@ class LoginScreen:
             password = passwordEntry.get()
             if username == "ahmed123" and password == "12345":
                 self.root.destroy()
+                from c_selection_screen import SelectionScreen
                 SelectionScreen()
             else:
                 messagebox.showerror("Error", "Invalid username or password")

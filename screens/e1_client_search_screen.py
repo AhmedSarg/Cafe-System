@@ -5,8 +5,7 @@ sys.path.insert(0, "values")
 from colors import *
 from fonts import *
 from customtkinter import *
-from PIL import ImageTk, Image
-from e2_client_add_screen import ClientAddScreen
+from PIL import Image
 
 
 class ClientSearchScreen:
@@ -86,6 +85,7 @@ class ClientSearchScreen:
 
         def toClientAddScreen():
             self.root.destroy()
+            from e2_client_add_screen import ClientAddScreen
             ClientAddScreen()
 
         buttonAdd = CTkButton(

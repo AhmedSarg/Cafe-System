@@ -7,8 +7,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import Progressbar
 from customtkinter import *
-from e1_client_search_screen import ClientSearchScreen
-from f_cash_screen import CashScreen
 
 
 class MenuScreen:
@@ -309,8 +307,10 @@ class MenuScreen:
         def toNextScreen():
             self.root.destroy()
             if next == "takeaway":
+                from e1_client_search_screen import ClientSearchScreen
                 ClientSearchScreen()
             elif next == "cafe":
+                from f_cash_screen import CashScreen
                 CashScreen()
 
         next_button = CTkButton(

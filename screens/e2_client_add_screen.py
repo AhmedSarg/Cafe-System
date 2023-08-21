@@ -2,6 +2,7 @@ from tkinter import *
 import sys
 from tkinter import messagebox
 
+
 sys.path.insert(0, "values")
 sys.path.insert(0, "classes")
 sys.path.insert(0, "database")
@@ -10,7 +11,7 @@ from fonts import *
 from client import *
 from db_controller import *
 from customtkinter import *
-from PIL import ImageTk, Image
+from PIL import Image
 
 
 class ClientAddScreen:
@@ -160,6 +161,12 @@ class ClientAddScreen:
         )
         tmp.grid(row=0, column=0, columnspan=8)
 
+        def backClick():
+            self.root.destroy()
+            from e1_client_search_screen import ClientSearchScreen
+            ClientSearchScreen()
+            
+
         buttonback = CTkButton(
             buttonsFrame,
             width=250,
@@ -172,6 +179,7 @@ class ClientAddScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
+            command=backClick
         )
         buttonback.grid(row=0, column=1)
 
@@ -194,6 +202,9 @@ class ClientAddScreen:
                     messagebox.showinfo(
                         "Success", "Client added to database successfully"
                     )
+                    self.root.destroy()
+                    from f_cash_screen import CashScreen
+                    CashScreen()
                 except:
                     messagebox.showerror("Failed", "Can't add client to database")
 

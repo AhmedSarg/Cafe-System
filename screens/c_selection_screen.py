@@ -7,7 +7,6 @@ from fonts import *
 from customtkinter import *
 from tkinter import ttk
 from PIL import Image
-from d_menu_screen import MenuScreen
 
 
 class SelectionScreen:
@@ -42,6 +41,7 @@ class SelectionScreen:
 
         def toMenuCafe():
             self.root.destroy()
+            from d_menu_screen import MenuScreen
             MenuScreen(next="cafe")
 
         buttonCafe = CTkButton(
