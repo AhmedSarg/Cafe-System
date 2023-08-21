@@ -9,7 +9,7 @@ from PIL import Image
 
 
 class CashScreen:
-    def __init__(self, paid):
+    def __init__(self, price, selection):
         self.root = Tk()
         self.root.title("Cash Calculate")
         self.root.state("zoomed")
@@ -73,7 +73,7 @@ class CashScreen:
 
         priceValue = CTkLabel(
             priceFrame,
-            text="160.5" + " ",
+            text= str(price) + " ",
             text_color=white,
             font=(lucida, 22),
             fg_color=transparent,
@@ -207,6 +207,11 @@ class CashScreen:
         )
         buttonsTemp.grid(row=0, column=1, columnspan=9)
 
+        def toMenuScreen():
+            self.root.destroy()
+            from d_menu_screen import MenuScreen
+            MenuScreen(selection)
+
         buttonBack = CTkButton(
             buttonsFrame,
             width=150,
@@ -219,8 +224,14 @@ class CashScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
+            command=toMenuScreen
         )
         buttonBack.grid(row=0, column=1)
+
+        def toRecieptScreen():
+            self.root.destroy()
+            from g_reciept_screen import RecieptScreen
+            RecieptScreen(price, selection)
 
         buttonNext = CTkButton(
             buttonsFrame,
@@ -234,6 +245,7 @@ class CashScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
+            command=toRecieptScreen
         )
         buttonNext.grid(row=0, column=9)
 

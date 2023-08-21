@@ -42,7 +42,7 @@ class SelectionScreen:
         def toMenuCafe():
             self.root.destroy()
             from d_menu_screen import MenuScreen
-            MenuScreen(next="cafe")
+            MenuScreen(selection="cafe")
 
         buttonCafe = CTkButton(
             buttonsFrame,
@@ -63,7 +63,7 @@ class SelectionScreen:
         def toMenuTakeAway():
             self.root.destroy()
             from d_menu_screen import MenuScreen
-            MenuScreen(next="takeaway")
+            MenuScreen(selection="takeaway")
 
         buttonTakeAway = CTkButton(
             buttonsFrame,

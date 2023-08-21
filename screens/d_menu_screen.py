@@ -10,7 +10,7 @@ from customtkinter import *
 
 
 class MenuScreen:
-    def __init__(self, next):
+    def __init__(self, selection):
         self.root = Tk()
         self.root.title("Menu")
         self.root.state("zoomed")
@@ -305,13 +305,14 @@ class MenuScreen:
         lbl_priceNum.grid(row=1, column=9, padx=25, pady=22)
 
         def toNextScreen():
+            price = 250
             self.root.destroy()
-            if next == "takeaway":
+            if selection == "takeaway":
                 from e1_client_search_screen import ClientSearchScreen
-                ClientSearchScreen()
-            elif next == "cafe":
+                ClientSearchScreen(price, selection)
+            elif selection == "cafe":
                 from f_cash_screen import CashScreen
-                CashScreen()
+                CashScreen(price, selection)
 
         next_button = CTkButton(
             quantity_Frame,
