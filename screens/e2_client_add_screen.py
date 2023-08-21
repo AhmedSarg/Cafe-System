@@ -15,7 +15,7 @@ from PIL import Image
 
 
 class ClientAddScreen:
-    def __init__(self):
+    def __init__(self, price, selection):
         self.root = Tk()
         connection = openConnection()
         self.root.title("Client Add")
@@ -161,10 +161,10 @@ class ClientAddScreen:
         )
         tmp.grid(row=0, column=0, columnspan=8)
 
-        def backClick():
+        def toClientSearchScreen():
             self.root.destroy()
             from e1_client_search_screen import ClientSearchScreen
-            ClientSearchScreen()
+            ClientSearchScreen(price, selection)
             
 
         buttonback = CTkButton(
@@ -179,7 +179,7 @@ class ClientAddScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
-            command=backClick
+            command=toClientSearchScreen
         )
         buttonback.grid(row=0, column=1)
 
@@ -204,7 +204,7 @@ class ClientAddScreen:
                     )
                     self.root.destroy()
                     from f_cash_screen import CashScreen
-                    CashScreen()
+                    CashScreen(price, selection)
                 except:
                     messagebox.showerror("Failed", "Can't add client to database")
 

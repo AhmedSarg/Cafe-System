@@ -9,7 +9,7 @@ from PIL import Image
 
 
 class ClientSearchScreen:
-    def __init__(self):
+    def __init__(self, price, selection):
         self.root = Tk()
         self.root.title("Client Search")
         self.root.state("zoomed")
@@ -86,7 +86,7 @@ class ClientSearchScreen:
         def toClientAddScreen():
             self.root.destroy()
             from e2_client_add_screen import ClientAddScreen
-            ClientAddScreen()
+            ClientAddScreen(price, selection)
 
         buttonAdd = CTkButton(
             toolsFrame,
