@@ -40,5 +40,15 @@ class SplashScreen:
 
         self.root.overrideredirect(True)
 
-    def loop(self):
+        def splashToLogin():
+            self.root.destroy()
+            from b_login_screen import LoginScreen
+
+            LoginScreen()
+
+        self.root.after(1000, splashToLogin)
+
         self.root.mainloop()
+
+
+SplashScreen()
