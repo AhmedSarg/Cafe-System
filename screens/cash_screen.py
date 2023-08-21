@@ -215,21 +215,6 @@ buttonBack = CTkButton(
 )
 buttonBack.grid(row=0, column=1)
 
-buttonPrint = CTkButton(
-    buttonsFrame,
-    width=150,
-    height=50,
-    text="Print",
-    hover=True,
-    hover_color=cafe,
-    text_color=black,
-    fg_color=white,
-    bg_color=transparent,
-    font=(lucida, 22),
-    corner_radius=16,
-)
-buttonPrint.grid(row=0, column=5)
-
 buttonNext = CTkButton(
     buttonsFrame,
     width=150,
