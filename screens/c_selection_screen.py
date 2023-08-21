@@ -62,6 +62,7 @@ class SelectionScreen:
 
         def toMenuTakeAway():
             self.root.destroy()
+            from d_menu_screen import MenuScreen
             MenuScreen(next="takeaway")
 
         buttonTakeAway = CTkButton(

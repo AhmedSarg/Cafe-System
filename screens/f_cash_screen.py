@@ -5,11 +5,11 @@ sys.path.insert(0, "values")
 from colors import *
 from fonts import *
 from customtkinter import *
-from PIL import ImageTk, Image
+from PIL import Image
 
 
 class CashScreen:
-    def __init__(self):
+    def __init__(self, paid):
         self.root = Tk()
         self.root.title("Cash Calculate")
         self.root.state("zoomed")
