@@ -195,7 +195,7 @@ class ClientAddScreen:
                 messagebox.showerror("Failed", "Phone Number is not valid")
             else:
                 try:
-                    addClient(
+                    client = addClient(
                         connection,
                         Client(name=name.title(), address=address.lower(), phone=phone),
                     )
@@ -209,7 +209,7 @@ class ClientAddScreen:
                     CashScreen(
                         price,
                         selection,
-                        Client(name.title(), address.lower(), phone),
+                        client,
                         orders,
                     )
                 except:
