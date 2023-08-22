@@ -38,14 +38,14 @@ class SuccessScreen:
         successLabel = Label(
             mainFrame,
             text="Order Success",
-            font=(lucida, 60),
+            font=(lucida, 40),
             bg=beige,
         )
         successLabel.grid(row=0, column=0, pady=30)
 
         cup = Image.open("icons\checkmark.png")
         cup = cup.resize((80, 80))
-        icon = CTkImage(light_image=cup, size=(150, 150))
+        icon = CTkImage(light_image=cup, size=(80, 80))
         logo = CTkLabel(
             mainFrame,
             image=icon,

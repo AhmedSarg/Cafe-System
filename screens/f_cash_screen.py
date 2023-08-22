@@ -2,14 +2,16 @@ from tkinter import *
 import sys
 
 sys.path.insert(0, "values")
+sys.path.insert(0, "classes")
 from colors import *
 from fonts import *
+from client import *
 from customtkinter import *
 from PIL import Image
 
 
 class CashScreen:
-    def __init__(self, price, selection):
+    def __init__(self, price, selection, client):
         self.root = Tk()
         self.root.title("Cash Calculate")
         self.root.state("zoomed")
@@ -74,7 +76,7 @@ class CashScreen:
 
         priceValue = CTkLabel(
             priceFrame,
-            text= str(price) + " ",
+            text=str(price) + " ",
             text_color=white,
             font=(lucida, 22),
             fg_color=transparent,
@@ -165,7 +167,9 @@ class CashScreen:
 
         paid = StringVar()
 
-        paid.trace("w", lambda name, index, mode, paid=paid: calculateRemaining(paid.get()))
+        paid.trace(
+            "w", lambda name, index, mode, paid=paid: calculateRemaining(paid.get())
+        )
 
         paidEntry = CTkEntry(
             paidFrame,
@@ -184,11 +188,18 @@ class CashScreen:
         paidEntry.grid(row=2, column=0, columnspan=80)
 
         def calculateRemainingWithDiscount(discount):
-            remainingValue.configure(text=self.remaining + float(discount) / 100 * float(price))
+            remainingValue.configure(
+                text=self.remaining + float(discount) / 100 * float(price)
+            )
 
         discountValue = StringVar(value=0)
 
-        discountValue.trace("w", lambda name, index, mode, discountValue=discountValue: calculateRemainingWithDiscount(discountValue.get()))
+        discountValue.trace(
+            "w",
+            lambda name, index, mode, discountValue=discountValue: calculateRemainingWithDiscount(
+                discountValue.get()
+            ),
+        )
 
         discountEntry = CTkEntry(
             discountFrame,
@@ -228,6 +239,7 @@ class CashScreen:
         def toMenuScreen():
             self.root.destroy()
             from d_menu_screen import MenuScreen
+
             MenuScreen(selection)
 
         buttonBack = CTkButton(
@@ -242,7 +254,7 @@ class CashScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
-            command=toMenuScreen
+            command=toMenuScreen,
         )
         buttonBack.grid(row=0, column=1)
 
@@ -250,9 +262,11 @@ class CashScreen:
             self.root.destroy()
             if selection == "takeaway":
                 from g_reciept_screen import RecieptScreen
-                RecieptScreen(price, selection)
-            elif selection == "cafe" :
+
+                RecieptScreen(price, selection, client)
+            elif selection == "cafe":
                 from h_success_screen import SuccessScreen
+
                 SuccessScreen()
 
         buttonNext = CTkButton(
@@ -267,7 +281,7 @@ class CashScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
-            command=toRecieptScreen
+            command=toRecieptScreen,
         )
         buttonNext.grid(row=0, column=9)
 
@@ -277,4 +291,5 @@ class CashScreen:
 
         self.root.mainloop()
 
-CashScreen("30", "takeaway")
+
+# CashScreen("30", "takeaway")

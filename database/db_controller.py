@@ -2,6 +2,7 @@ import sqlite3
 import sys
 sys.path.insert(0, "classes")
 from product import Product
+from client import Client
 
 
 def openConnection():
@@ -37,3 +38,10 @@ def getMenu(connection, category):
     return products
 
 # def get
+
+def searchClient(connection, number):
+    cursor = connection.cursor()
+    result = cursor.execute("select * from Customer where Phone = ?", ([number])).fetchone()
+    client = Client(name=result[1], phone=result[2], address=result[3])
+    client.addId(result[0])
+    return client

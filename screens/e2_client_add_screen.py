@@ -197,14 +197,15 @@ class ClientAddScreen:
                 try:
                     addClient(
                         connection,
-                        Client(name=name.lower(), address=address.lower(), phone=phone),
+                        Client(name=name.title(), address=address.lower(), phone=phone),
                     )
+
                     messagebox.showinfo(
                         "Success", "Client added to database successfully"
                     )
                     self.root.destroy()
                     from f_cash_screen import CashScreen
-                    CashScreen(price, selection)
+                    CashScreen(price, selection, Client(name.title(), address.lower(), phone))
                 except:
                     messagebox.showerror("Failed", "Can't add client to database")
 

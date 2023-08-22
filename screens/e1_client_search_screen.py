@@ -1,15 +1,19 @@
 from tkinter import *
 import sys
+from tkinter import messagebox
 
 sys.path.insert(0, "values")
+sys.path.insert(0, "database")
 from colors import *
 from fonts import *
 from customtkinter import *
+from db_controller import *
 from PIL import Image
 
 
 class ClientSearchScreen:
     def __init__(self, price, selection):
+        connection = openConnection()
         self.root = Tk()
         self.root.title("Client Search")
         self.root.state("zoomed")
@@ -86,6 +90,7 @@ class ClientSearchScreen:
         def toClientAddScreen():
             self.root.destroy()
             from e2_client_add_screen import ClientAddScreen
+
             ClientAddScreen(price, selection)
 
         buttonAdd = CTkButton(
@@ -100,24 +105,9 @@ class ClientSearchScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
-            command=toClientAddScreen
+            command=toClientAddScreen,
         )
         buttonAdd.grid(row=2, column=2, pady=40)
-
-        buttonSearch = CTkButton(
-            toolsFrame,
-            width=250,
-            height=50,
-            text="Search",
-            hover=True,
-            hover_color=cafe,
-            text_color=black,
-            fg_color=white,
-            bg_color=transparent,
-            font=(lucida, 22),
-            corner_radius=16,
-        )
-        buttonSearch.grid(row=2, column=5, pady=40)
 
         toolsFrame.grid(row=0, column=0, padx=20)
 
@@ -162,47 +152,85 @@ class ClientSearchScreen:
         )
         buttonTempLabel.grid(row=0, column=4, pady=(20, 0))
 
-        # showIdLabel = CTkLabel(
-        #     detailsframe,
-        #     text="1",
-        #     font=(normal, 20),
-        #     text_color=white,
-        # )
-        # showIdLabel.grid(row=1, column=1)
+        showIdLabel = CTkLabel(
+            detailsframe,
+            text="1",
+            font=(normal, 20),
+            text_color=white,
+        )
 
-        # showNameLabel = CTkLabel(
-        #     detailsframe,
-        #     text="Ahmed Essam Eliwa",
-        #     font=(normal, 16),
-        #     text_color=white,
-        # )
-        # showNameLabel.grid(row=1, column=2)
+        showNameLabel = CTkLabel(
+            detailsframe,
+            text="Ahmed Essam Eliwa",
+            font=(normal, 20),
+            text_color=white,
+        )
 
-        # showaddressLabel = CTkLabel(
-        #     detailsframe,
-        #     text="EQalyoubia - Shoubra - Basos - B7b7",
-        #     font=(normal, 16),
-        #     text_color=white,
-        # )
-        # showaddressLabel.grid(row=1, column=3)
+        showAddressLabel = CTkLabel(
+            detailsframe,
+            text="EQalyoubia - Shoubra - Basos - B7b7",
+            font=(normal, 20),
+            text_color=white,
+        )
 
-        # buttonSelect = CTkButton(
-        #     detailsframe,
-        #     width=60,
-        #     height=30,
-        #     text="Select",
-        #     hover=True,
-        #     hover_color=cafe,
-        #     text_color=black,
-        #     fg_color=white,
-        #     bg_color=transparent,
-        #     font=(lucida, 16),
-        #     corner_radius=10,
-        # )
-        # buttonSelect.grid(row=1, column=4, padx=20)
+        def selectClient():
+            self.root.destroy()
+            from f_cash_screen import CashScreen
+
+            CashScreen(price, selection, self.client)
+
+        buttonSelect = CTkButton(
+            detailsframe,
+            width=60,
+            height=30,
+            text="Select",
+            hover=True,
+            hover_color=cafe,
+            text_color=black,
+            fg_color=white,
+            bg_color=transparent,
+            font=(lucida, 20),
+            corner_radius=10,
+            command=selectClient,
+        )
 
         detailsframe.grid(row=1, column=0, padx=(20, 0), pady=(0, 40))
+
+        def searchClientClick():
+            phoneNumber = searchEntry.get()
+            if not phoneNumber.isdigit():
+                messagebox.showerror("Error", "Phone number is not valid")
+            else:
+                try:
+                    self.client = searchClient(connection, phoneNumber)
+                    showIdLabel.configure(text=self.client.id)
+                    showNameLabel.configure(text=self.client.name)
+                    showAddressLabel.configure(text=self.client.address)
+
+                    showIdLabel.grid(row=1, column=1)
+                    showNameLabel.grid(row=1, column=2)
+                    showAddressLabel.grid(row=1, column=3)
+                    buttonSelect.grid(row=1, column=4, padx=20)
+                except:
+                    messagebox.showerror("Error", "Client not found, Try adding new")
+
+        buttonSearch = CTkButton(
+            toolsFrame,
+            width=250,
+            height=50,
+            text="Search",
+            hover=True,
+            hover_color=cafe,
+            text_color=black,
+            fg_color=white,
+            bg_color=transparent,
+            font=(lucida, 22),
+            corner_radius=16,
+            command=searchClientClick,
+        )
+        buttonSearch.grid(row=2, column=5, pady=40)
 
         mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
         self.root.mainloop()
+        endConnection(connection)
