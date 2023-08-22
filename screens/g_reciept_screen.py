@@ -205,29 +205,30 @@ class RecieptScreen:
         productPriceLabel.grid(row=0, column=9)
 
         for i in range(0, len(orders)):
-            productNameValue = CTkLabel(
-                productFrame,
-                text=orders[i].name,
-                font=(lucida, 20),
-                text_color=white,
-            )
-            productNameValue.grid(row=i + 1, column=1)
+            if orders[i].count > 0:
+                productNameValue = CTkLabel(
+                    productFrame,
+                    text=orders[i].name,
+                    font=(lucida, 20),
+                    text_color=white,
+                )
+                productNameValue.grid(row=i + 1, column=1)
 
-            productCountValue = CTkLabel(
-                productFrame,
-                text=orders[i].count,
-                font=(lucida, 20),
-                text_color=white,
-            )
-            productCountValue.grid(row=i + 1, column=5)
+                productCountValue = CTkLabel(
+                    productFrame,
+                    text=orders[i].count,
+                    font=(lucida, 20),
+                    text_color=white,
+                )
+                productCountValue.grid(row=i + 1, column=5)
 
-            productPriceValue = CTkLabel(
-                productFrame,
-                text=orders[i].totalPrice,
-                font=(lucida, 20),
-                text_color=white,
-            )
-            productPriceValue.grid(row=i + 1, column=9)
+                productPriceValue = CTkLabel(
+                    productFrame,
+                    text=orders[i].totalPrice,
+                    font=(lucida, 20),
+                    text_color=white,
+                )
+                productPriceValue.grid(row=i + 1, column=9)
 
         productFrame.grid(row=1, column=0, padx=30, pady=(30, 50))
 
