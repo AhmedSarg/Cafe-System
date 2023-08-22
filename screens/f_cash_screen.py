@@ -15,6 +15,7 @@ class CashScreen:
         self.root.state("zoomed")
         self.root.resizable(False, False)
         self.root.config(background=beige)
+        self.remaining = 0
         screenWidth = self.root.winfo_screenwidth()
         screenHeight = self.root.winfo_screenheight()
 
@@ -100,21 +101,6 @@ class CashScreen:
         )
         paidLabel.grid(row=1, column=0)
 
-        paidEntry = CTkEntry(
-            paidFrame,
-            width=550,
-            height=35,
-            corner_radius=10,
-            border_width=0,
-            fg_color=white,
-            bg_color=transparent,
-            text_color=black,
-            font=(normal, 16),
-            placeholder_text="Paid",
-            placeholder_text_color=grey,
-        )
-        paidEntry.grid(row=2, column=0, columnspan=80)
-
         paidFrame.grid(row=2, column=1, pady=20, padx=30)
 
         discountFrame = CTkFrame(
@@ -133,21 +119,6 @@ class CashScreen:
             bg_color=transparent,
         )
         discountLabel.grid(row=1, column=0)
-
-        discountEntry = CTkEntry(
-            discountFrame,
-            width=550,
-            height=35,
-            corner_radius=10,
-            border_width=0,
-            fg_color=white,
-            bg_color=transparent,
-            text_color=black,
-            font=(normal, 16),
-            placeholder_text="Discount",
-            placeholder_text_color=grey,
-        )
-        discountEntry.grid(row=2, column=0, columnspan=80)
 
         discountFrame.grid(row=3, column=1, pady=20, padx=30)
 
@@ -187,6 +158,53 @@ class CashScreen:
             bg_color=transparent,
         )
         remainingValue.grid(row=0, column=80)
+
+        def calculateRemaining(paid):
+            self.remaining = float(paid) - float(price)
+            remainingValue.configure(text=self.remaining)
+
+        paid = StringVar()
+
+        paid.trace("w", lambda name, index, mode, paid=paid: calculateRemaining(paid.get()))
+
+        paidEntry = CTkEntry(
+            paidFrame,
+            width=550,
+            height=35,
+            textvariable=paid,
+            corner_radius=10,
+            border_width=0,
+            fg_color=white,
+            bg_color=transparent,
+            text_color=black,
+            font=(normal, 16),
+            placeholder_text="Paid",
+            placeholder_text_color=grey,
+        )
+        paidEntry.grid(row=2, column=0, columnspan=80)
+
+        def calculateRemainingWithDiscount(discount):
+            remainingValue.configure(text=self.remaining + float(discount) / 100 * float(price))
+
+        discountValue = StringVar(value=0)
+
+        discountValue.trace("w", lambda name, index, mode, discountValue=discountValue: calculateRemainingWithDiscount(discountValue.get()))
+
+        discountEntry = CTkEntry(
+            discountFrame,
+            width=550,
+            height=35,
+            textvariable=discountValue,
+            corner_radius=10,
+            border_width=0,
+            fg_color=white,
+            bg_color=transparent,
+            text_color=black,
+            font=(normal, 16),
+            placeholder_text="Discount",
+            placeholder_text_color=grey,
+        )
+        discountEntry.grid(row=2, column=0, columnspan=80)
 
         remainingFrame.grid(row=4, column=1, pady=20, padx=30)
 
@@ -230,8 +248,12 @@ class CashScreen:
 
         def toRecieptScreen():
             self.root.destroy()
-            from g_reciept_screen import RecieptScreen
-            RecieptScreen(price, selection)
+            if selection == "takeaway":
+                from g_reciept_screen import RecieptScreen
+                RecieptScreen(price, selection)
+            elif selection == "cafe" :
+                from h_success_screen import SuccessScreen
+                SuccessScreen()
 
         buttonNext = CTkButton(
             buttonsFrame,
@@ -254,3 +276,5 @@ class CashScreen:
         mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
         self.root.mainloop()
+
+CashScreen("30", "takeaway")

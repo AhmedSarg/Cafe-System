@@ -36,3 +36,4 @@ def getMenu(connection, category):
     connection.commit()
     return products
 
+# def get
