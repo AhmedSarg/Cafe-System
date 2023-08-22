@@ -337,4 +337,4 @@ class MenuScreen:
         print(self.selectedProduct.name)
         endConnection(connection)
 
-MenuScreen("cafe")
+# MenuScreen("cafe")
