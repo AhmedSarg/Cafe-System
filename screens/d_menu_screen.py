@@ -1,11 +1,14 @@
 import sys
 
+
 sys.path.insert(0, "values")
 sys.path.insert(0, "classes")
 sys.path.insert(0, "database")
 from colors import *
 from fonts import *
 from client import *
+from bill import *
+from order import *
 from tkinter import *
 from customtkinter import *
 from db_controller import *
@@ -20,6 +23,11 @@ class MenuScreen:
         self.selectedProduct = Product(id=0, name="None", category="None", price="None")
         self.totalPrice = 0.0
         self.thisQuantity = 0
+        self.ordersBookmark = dict()
+        self.orders = list()
+
+        if selection == "takeaway":
+            self.bill = Bill(getBillID(connection))
 
         self.root = Tk()
         self.root.title("Menu")
@@ -106,7 +114,7 @@ class MenuScreen:
             self.products = getMenu(connection, "Dessert")
             showProducts(self.products)
 
-        DessertCategoryButton = CTkButton(
+        dessertCategoryButton = CTkButton(
             categoryFrame,
             width=170,
             height=80,
@@ -120,7 +128,7 @@ class MenuScreen:
             corner_radius=16,
             command=dessertCategoryValue
         )
-        DessertCategoryButton.grid(row=4, column=0, pady=((height - 170) / 20), padx=15)
+        dessertCategoryButton.grid(row=4, column=0, pady=((height - 170) / 20), padx=15)
 
         def softDrinksCategoryValue():
             destroy(self.buttons)
@@ -203,6 +211,9 @@ class MenuScreen:
                 productQuantityValue.configure(text=self.thisQuantity)
                 self.totalPrice -= self.selectedProduct.price
                 productPricevalue.configure(text=self.totalPrice)
+                productIndex = self.ordersBookmark[self.selectedProduct.name]
+                self.orders[productIndex].count -= 1
+                self.orders[productIndex].totalPrice -=  float(self.selectedProduct.price)
 
         productQuantityMinusButton = CTkButton(
             selectedProductDetailsFrame,
@@ -234,6 +245,9 @@ class MenuScreen:
             productQuantityValue.configure(text=self.thisQuantity)
             self.totalPrice += self.selectedProduct.price
             productPricevalue.configure(text=self.totalPrice)
+            productIndex = self.ordersBookmark[self.selectedProduct.name]
+            self.orders[productIndex].count += 1
+            self.orders[productIndex].totalPrice +=  float(self.selectedProduct.price)
 
         productQuantityPlusButton = CTkButton(
             selectedProductDetailsFrame,
@@ -276,10 +290,10 @@ class MenuScreen:
             self.root.destroy()
             if selection == "takeaway":
                 from e1_client_search_screen import ClientSearchScreen
-                ClientSearchScreen(price, selection)
+                ClientSearchScreen(price, selection, self.orders)
             elif selection == "cafe":
                 from f_cash_screen import CashScreen
-                CashScreen(price, selection, Client("None", "None", "None"))
+                CashScreen(price, selection, Client("None", "None", "None"), self.orders)
 
         proceedButton = CTkButton(
             selectedProductDetailsFrame,
@@ -305,8 +319,22 @@ class MenuScreen:
             self.selectedProduct = self.products[i]
             product = self.selectedProduct
             productNameValue.configure(text=product.name)
-            self.thisQuantity = 0
-            productQuantityValue.configure(text=self.thisQuantity)
+            if not product.name in self.ordersBookmark:
+                self.thisQuantity = 1
+                self.ordersBookmark[product.name] = len(self.orders)
+                if selection == "takeaway":
+                    self.orders.append(Order(self.bill.id, product.name, self.thisQuantity, int(self.thisQuantity) * product.price))
+                elif selection == "cafe":
+                    self.orders.append(Order(0, product.name, self.thisQuantity, int(self.thisQuantity) * product.price))
+                productQuantityValue.configure(text=self.thisQuantity)
+            else:
+                productIndex = self.ordersBookmark[product.name]
+                self.orders[productIndex].count += 1
+                self.thisQuantity = self.orders[productIndex].count
+                self.orders[productIndex].totalPrice +=  float(self.selectedProduct.price)
+                productQuantityValue.configure(text=self.orders[productIndex].count)
+            self.totalPrice += product.price
+            productPricevalue.configure(text=self.totalPrice)
 
         def showProducts(products):
             c = 1
@@ -336,7 +364,4 @@ class MenuScreen:
                 c+=1
 
         self.root.mainloop()
-        print(self.selectedProduct.name)
         endConnection(connection)
-
-# MenuScreen("cafe")

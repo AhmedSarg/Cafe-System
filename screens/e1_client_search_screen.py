@@ -12,7 +12,7 @@ from PIL import Image
 
 
 class ClientSearchScreen:
-    def __init__(self, price, selection):
+    def __init__(self, price, selection, orders):
         connection = openConnection()
         self.root = Tk()
         self.root.title("Client Search")
@@ -91,7 +91,7 @@ class ClientSearchScreen:
             self.root.destroy()
             from e2_client_add_screen import ClientAddScreen
 
-            ClientAddScreen(price, selection)
+            ClientAddScreen(price, selection, orders)
 
         buttonAdd = CTkButton(
             toolsFrame,
@@ -177,7 +177,7 @@ class ClientSearchScreen:
             self.root.destroy()
             from f_cash_screen import CashScreen
 
-            CashScreen(price, selection, self.client)
+            CashScreen(price, selection, self.client, orders)
 
         buttonSelect = CTkButton(
             detailsframe,

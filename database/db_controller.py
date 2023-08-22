@@ -3,6 +3,7 @@ import sys
 sys.path.insert(0, "classes")
 from product import Product
 from client import Client
+from order import Order
 
 
 def openConnection():
@@ -37,11 +38,38 @@ def getMenu(connection, category):
     connection.commit()
     return products
 
-# def get
-
 def searchClient(connection, number):
     cursor = connection.cursor()
     result = cursor.execute("select * from Customer where Phone = ?", ([number])).fetchone()
     client = Client(name=result[1], phone=result[2], address=result[3])
     client.addId(result[0])
     return client
+
+def getBillID(connection):
+    cursor = connection.cursor()
+    result = cursor.execute("select * from Bill").fetchall()
+    if (len(result) - 1) < 0:
+        return 1
+    else:
+        return result[len(result) - 1][0] + 1
+
+def addBilltoDB(connection, bill):
+    cursor = connection.cursor()
+    cursor.execute(
+        """
+        insert into Bill(Cust_ID, Order_ID, Total_Price) values (?, ?, ?)
+        """,
+        (bill.customerId, bill.orderId, bill.totalPrice),
+    )
+    connection.commit()
+
+def addOrdertoDB(connection, orders):
+    cursor = connection.cursor()
+    for order in orders:
+        cursor.execute(
+            """
+            INSERT INTO Order_Items(Bill_ID, Product_Count, Total_Price, Product_Name) values (?, ?, ?, ?)
+            """,
+            (order.id, order.count, order.totalPrice, str(order.name)),
+        )
+    connection.commit()
