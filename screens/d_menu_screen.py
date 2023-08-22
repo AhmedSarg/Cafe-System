@@ -13,7 +13,11 @@ class MenuScreen:
     def __init__(self, selection):
         connection = openConnection()
 
-        self.selectedProduct = ""
+        self.products = []
+        self.buttons = list()
+        self.selectedProduct = Product(id=0, name="None", category="None", price="None")
+        self.totalPrice = 0.0
+        self.thisQuantity = 0
 
         self.root = Tk()
         self.root.title("Menu")
@@ -41,7 +45,9 @@ class MenuScreen:
         categoryFrame.place(x=0, y=0)
 
         def hotDrinksCategoryValue():
-            getMenu(connection, "Hot Drinks")
+            destroy(self.buttons)
+            self.products = getMenu(connection, "Hot Drinks")
+            showProducts(self.products)
 
 
         hotDrinksCategoryButton = CTkButton(
@@ -61,7 +67,9 @@ class MenuScreen:
         hotDrinksCategoryButton.grid(row=1, column=0, pady=((height - 170) / 20), padx=15)
 
         def coffeeCategoryValue():
-            getMenu(connection, "Coffee")
+            destroy(self.buttons)
+            self.products = getMenu(connection, "Coffee")
+            showProducts(self.products)
 
         coffeeCategoryButton = CTkButton(
             categoryFrame,
@@ -80,7 +88,9 @@ class MenuScreen:
         coffeeCategoryButton.grid(row=2, column=0, pady=((height - 170) / 20), padx=15)
 
         def iceCreamCategoryValue():
-            getMenu(connection, "Ice Cream")
+            destroy(self.buttons)
+            self.products = getMenu(connection, "Ice Cream")
+            showProducts(self.products)
 
         IceCreamCategoryButton = CTkButton(
             categoryFrame,
@@ -99,7 +109,9 @@ class MenuScreen:
         IceCreamCategoryButton.grid(row=3, column=0, pady=((height - 170) / 20), padx=15)
 
         def dessertCategoryValue():
-            getMenu(connection, "Dessert")
+            destroy(self.buttons)
+            self.products = getMenu(connection, "Dessert")
+            showProducts(self.products)
 
         DessertCategoryButton = CTkButton(
             categoryFrame,
@@ -118,7 +130,9 @@ class MenuScreen:
         DessertCategoryButton.grid(row=4, column=0, pady=((height - 170) / 20), padx=15)
 
         def softDrinksCategoryValue():
-            getMenu(connection, "Soft Drinks")
+            destroy(self.buttons)
+            self.products = getMenu(connection, "Soft Drinks")
+            showProducts(self.products)
 
         softDrinksCategoryButton = CTkButton(
             categoryFrame,
@@ -147,85 +161,60 @@ class MenuScreen:
 
 
 
-        productFrame = CTkFrame(
+        productFrame = CTkScrollableFrame(
             self.root,
-            fg_color=beige,
+            fg_color=transparent,
             bg_color=transparent,
+            width=width - 220,
+            height=height - 100,
+            corner_radius=0,
+            scrollbar_button_color= darkBlue,
+            scrollbar_button_hover_color= cafe,
         )
-        productFrame.place(x=230, y=30)
+        productFrame.place(x=200, y=0)
 
-        def testOnClick():
-            print(self.selectedCategory)
-
-        productItem = CTkButton(
-            productFrame,
-            width=240,
-            height=150,
-            text="Drink Hot",
-            hover=True,
-            hover_color=darkBlue,
-            text_color=white,
-            fg_color=cafe,
-            bg_color=transparent,
-            font=(lucida, 25),
-            corner_radius=25,
-            command=testOnClick
-        )
-        productItem._text_label.configure(wraplength=240)
-        productItem.grid(row=1, column=1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        quantity_Frame = CTkFrame(
+        selectedProductDetailsFrame = CTkFrame(
             self.root,
             fg_color=darkBlue,
             bg_color=transparent,
             corner_radius=0,
         )
-        quantity_Frame.pack(side="bottom")
+        selectedProductDetailsFrame.pack(side="bottom")
 
-        lbl_drink = CTkLabel(
-            quantity_Frame,
-            text="Drink : ",
+        productNameLabel = CTkLabel(
+            selectedProductDetailsFrame,
+            text="Name : ",
             font=(lucida, 20),
             text_color=white,
             height=100,
             bg_color=darkBlue,
             fg_color=darkBlue,
         )
-        lbl_drink.grid(row=1, column=1, padx=10)
+        productNameLabel.grid(row=1, column=1)
 
-        lbl_drinkName = Label(
-            quantity_Frame,
-            text="Drink Name",
+        productNameValue = CTkLabel(
+            selectedProductDetailsFrame,
+            text="None",
             font=(lucida, 20),
-            bg=darkBlue,
-            fg=white,
+            bg_color=transparent,
+            fg_color=transparent,
+            text_color=white,
+            width=200,
+            wraplength=200,
         )
-        lbl_drinkName.grid(row=1, column=2, padx=10, pady=22)
+        productNameValue.grid(row=1, column=2, pady=22)
 
-        lbl_quantity = Label(
-            quantity_Frame,
+        productQuantityLabel = Label(
+            selectedProductDetailsFrame,
             text="Quantity : ",
             font=(lucida, 20),
             bg=darkBlue,
             fg=white,
         )
-        lbl_quantity.grid(row=1, column=3, padx=(100, 10), pady=22)
+        productQuantityLabel.grid(row=1, column=3, pady=22)
 
-        min_button = CTkButton(
-            quantity_Frame,
+        productQuantityMinusButton = CTkButton(
+            selectedProductDetailsFrame,
             width=50,
             height=50,
             text="-",
@@ -236,19 +225,19 @@ class MenuScreen:
             font=(normal, 30, "bold"),
             corner_radius=20,
         )
-        min_button.grid(row=1, column=5, padx=5)
+        productQuantityMinusButton.grid(row=1, column=5, padx=5)
 
-        lbl_quantityNum = Label(
-            quantity_Frame,
-            text=" 5 ",
+        productQuantityValue = Label(
+            selectedProductDetailsFrame,
+            text="0",
             font=(lucida, 20),
             bg=darkBlue,
             fg=white,
         )
-        lbl_quantityNum.grid(row=1, column=6, padx=30, pady=22)
+        productQuantityValue.grid(row=1, column=6, padx=30, pady=22)
 
-        plus_button = CTkButton(
-            quantity_Frame,
+        productQuantityPlusButton = CTkButton(
+            selectedProductDetailsFrame,
             width=50,
             height=50,
             text="+",
@@ -259,28 +248,29 @@ class MenuScreen:
             font=(normal, 30, "bold"),
             corner_radius=20,
         )
-        plus_button.grid(row=1, column=7, padx=5)
+        productQuantityPlusButton.grid(row=1, column=7, padx=5)
 
-        lbl_price = Label(
-            quantity_Frame,
+        productPriceLabel = Label(
+            selectedProductDetailsFrame,
             text="Total Price :  ",
             font=(lucida, 20),
             bg=darkBlue,
             fg=white,
         )
-        lbl_price.grid(row=1, column=8, padx=(100, 10), pady=22)
+        productPriceLabel.grid(row=1, column=8, pady=22)
 
-        lbl_priceNum = Label(
-            quantity_Frame,
-            text="Price",
+        productPricevalue = CTkLabel(
+            selectedProductDetailsFrame,
+            text="0.0",
             font=(lucida, 20),
-            bg=darkBlue,
-            fg=white,
+            bg_color=transparent,
+            fg_color=transparent,
+            wraplength=100
         )
-        lbl_priceNum.grid(row=1, column=9, padx=25, pady=22)
+        productPricevalue.grid(row=1, column=9, pady=22)
 
         def toNextScreen():
-            price = 250
+            price = self.totalPrice
             self.root.destroy()
             if selection == "takeaway":
                 from e1_client_search_screen import ClientSearchScreen
@@ -289,8 +279,8 @@ class MenuScreen:
                 from f_cash_screen import CashScreen
                 CashScreen(price, selection)
 
-        next_button = CTkButton(
-            quantity_Frame,
+        proceedButton = CTkButton(
+            selectedProductDetailsFrame,
             width=50,
             height=50,
             text="→",
@@ -302,9 +292,54 @@ class MenuScreen:
             corner_radius=20,
             command=toNextScreen,
         )
-        next_button.grid(row=1, column=10, padx=100)
+        proceedButton.grid(row=1, column=10)
+
+
+        def destroy(buttons):
+            for i in range(0, len(buttons)):
+                buttons[i].destroy()
+
+        def getDetails(i):
+            self.selectedProduct = self.products[i]
+            product = self.selectedProduct
+            productNameValue.configure(text=product.name)
+            self.totalPrice += product.price
+            productPricevalue.configure(text=self.totalPrice)
+            productQuantityValue.configure(text="1")
+
+        def showProducts(products):
+            c = 1
+            r = 1
+            for i in range(0, len(products)):
+                if c == 5:
+                    c = 1
+                    r += 1
+                product = products[i]
+
+                productItem = CTkButton(
+                    productFrame,
+                    width=240,
+                    height=150,
+                    text=str(product.name),
+                    hover=True,
+                    hover_color=darkBlue,
+                    text_color=white,
+                    fg_color=cafe,
+                    bg_color=transparent,
+                    font=(normal, 25),
+                    corner_radius=25,
+                    command=lambda i=i: getDetails(i)
+                )
+                self.buttons.append(productItem)
+                productItem._text_label.configure(wraplength=200)
+                productItem.grid(row=r, column=c, padx = ((width - 200) / 32), pady = 50)
+                c+=1
+
+
+
 
         self.root.mainloop()
+        print(self.selectedProduct.name)
         endConnection(connection)
 
 MenuScreen("cafe")
