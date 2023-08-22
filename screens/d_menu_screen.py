@@ -1,9 +1,11 @@
 import sys
 
 sys.path.insert(0, "values")
+sys.path.insert(0, "classes")
 sys.path.insert(0, "database")
 from colors import *
 from fonts import *
+from client import *
 from tkinter import *
 from customtkinter import *
 from db_controller import *
@@ -277,7 +279,7 @@ class MenuScreen:
                 ClientSearchScreen(price, selection)
             elif selection == "cafe":
                 from f_cash_screen import CashScreen
-                CashScreen(price, selection)
+                CashScreen(price, selection, Client("None", "None", "None"))
 
         proceedButton = CTkButton(
             selectedProductDetailsFrame,
@@ -337,4 +339,4 @@ class MenuScreen:
         print(self.selectedProduct.name)
         endConnection(connection)
 
-MenuScreen("cafe")
+# MenuScreen("cafe")
