@@ -9,7 +9,7 @@ from PIL import Image
 
 
 class RecieptScreen:
-    def __init__(self, price, selection):
+    def __init__(self, price, selection, client):
         self.root = Tk()
         self.root.title("Reciept")
         self.root.state("zoomed")
@@ -69,7 +69,7 @@ class RecieptScreen:
 
         nameValue = CTkLabel(
             detailsFrame,
-            text="Ahmed",
+            text=client.name,
             font=(lucida, 20),
             text_color=white,
         )
@@ -95,7 +95,7 @@ class RecieptScreen:
 
         addressValue = CTkLabel(
             detailsFrame,
-            text="Banha",
+            text=client.address,
             font=(lucida, 20),
             text_color=white,
         )
@@ -121,7 +121,7 @@ class RecieptScreen:
 
         phoneValue = CTkLabel(
             detailsFrame,
-            text="0114567436",
+            text=client.phone,
             font=(lucida, 20),
             text_color=white,
         )
@@ -242,7 +242,7 @@ class RecieptScreen:
         def toCashScreen():
             self.root.destroy()
             from f_cash_screen import CashScreen
-            CashScreen(price, selection)
+            CashScreen(price, selection, client)
 
         buttonBack = CTkButton(
             buttonsFrame,
