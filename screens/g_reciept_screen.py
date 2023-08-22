@@ -70,7 +70,7 @@ class RecieptScreen:
         nameValue = CTkLabel(
             detailsFrame,
             text=client.name,
-            font=(lucida, 20),
+            font=(normal, 20),
             text_color=white,
         )
         nameValue.grid(row=0, column=80, pady=10)
@@ -96,7 +96,7 @@ class RecieptScreen:
         addressValue = CTkLabel(
             detailsFrame,
             text=client.address,
-            font=(lucida, 20),
+            font=(normal, 20),
             text_color=white,
         )
         addressValue.grid(row=1, column=80, pady=10)
@@ -122,7 +122,7 @@ class RecieptScreen:
         phoneValue = CTkLabel(
             detailsFrame,
             text=client.phone,
-            font=(lucida, 20),
+            font=(normal, 20),
             text_color=white,
         )
         phoneValue.grid(row=2, column=80, pady=10)
@@ -148,7 +148,7 @@ class RecieptScreen:
         priceValue = CTkLabel(
             detailsFrame,
             text=str(price),
-            font=(lucida, 20),
+            font=(normal, 20),
             text_color=white,
         )
         priceValue.grid(row=3, column=80, pady=10)

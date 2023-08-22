@@ -1,5 +1,6 @@
 from tkinter import *
 import sys
+from tkinter import messagebox
 
 sys.path.insert(0, "values")
 sys.path.insert(0, "database")
@@ -197,15 +198,21 @@ class ClientSearchScreen:
 
         def searchClientClick():
             phoneNumber = searchEntry.get()
-            self.client = searchClient(connection, phoneNumber)
-            showIdLabel.configure(text=self.client.id)
-            showNameLabel.configure(text=self.client.name)
-            showAddressLabel.configure(text=self.client.address)
+            if not phoneNumber.isdigit():
+                messagebox.showerror("Error", "Phone number is not valid")
+            else:
+                try:
+                    self.client = searchClient(connection, phoneNumber)
+                    showIdLabel.configure(text=self.client.id)
+                    showNameLabel.configure(text=self.client.name)
+                    showAddressLabel.configure(text=self.client.address)
 
-            showIdLabel.grid(row=1, column=1)
-            showNameLabel.grid(row=1, column=2)
-            showAddressLabel.grid(row=1, column=3)
-            buttonSelect.grid(row=1, column=4, padx=20)
+                    showIdLabel.grid(row=1, column=1)
+                    showNameLabel.grid(row=1, column=2)
+                    showAddressLabel.grid(row=1, column=3)
+                    buttonSelect.grid(row=1, column=4, padx=20)
+                except:
+                    messagebox.showerror("Error", "Client not found, Try adding new")
 
         buttonSearch = CTkButton(
             toolsFrame,
@@ -227,6 +234,3 @@ class ClientSearchScreen:
 
         self.root.mainloop()
         endConnection(connection)
-
-
-# ClientSearchScreen(30, "takeaway")
