@@ -25,7 +25,9 @@ def addClient(connection, client):
         """,
         (client.name, client.phone, client.address),
     )
+    result = searchClient(connection, client.phone)
     connection.commit()
+    return result
 
 
 def getMenu(connection, category):
