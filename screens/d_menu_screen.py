@@ -27,15 +27,6 @@ class MenuScreen:
         width = self.root.winfo_screenwidth()
         height = self.root.winfo_screenheight()
 
-
-
-
-
-
-
-
-
-
         categoryFrame = CTkFrame(
             self.root,
             fg_color=darkBlue,
@@ -150,17 +141,6 @@ class MenuScreen:
         )
         softDrinksCategoryButton.grid(row=5, column=0, pady=((height - 170) / 20), padx=15)
 
-
-
-
-
-
-
-
-
-
-
-
         productFrame = CTkScrollableFrame(
             self.root,
             fg_color=transparent,
@@ -187,10 +167,11 @@ class MenuScreen:
             font=(lucida, 20),
             text_color=white,
             height=100,
-            bg_color=darkBlue,
-            fg_color=darkBlue,
+            width=100,
+            bg_color=transparent,
+            fg_color=transparent,
         )
-        productNameLabel.grid(row=1, column=1)
+        productNameLabel.grid(row=1, column=1, padx=((width - 880) / 20))
 
         productNameValue = CTkLabel(
             selectedProductDetailsFrame,
@@ -202,21 +183,29 @@ class MenuScreen:
             width=200,
             wraplength=200,
         )
-        productNameValue.grid(row=1, column=2, pady=22)
+        productNameValue.grid(row=1, column=2, pady=20, padx=((width - 880) / 20))
 
-        productQuantityLabel = Label(
+        productQuantityLabel = CTkLabel(
             selectedProductDetailsFrame,
             text="Quantity : ",
             font=(lucida, 20),
-            bg=darkBlue,
-            fg=white,
+            width=120,
+            bg_color=transparent,
+            fg_color=transparent,
         )
-        productQuantityLabel.grid(row=1, column=3, pady=22)
+        productQuantityLabel.grid(row=1, column=3, pady=20, padx=((width - 880) / 20))
+
+        def removeItem():
+            if self.thisQuantity > 0:
+                self.thisQuantity -= 1
+                productQuantityValue.configure(text=self.thisQuantity)
+                self.totalPrice -= self.selectedProduct.price
+                productPricevalue.configure(text=self.totalPrice)
 
         productQuantityMinusButton = CTkButton(
             selectedProductDetailsFrame,
-            width=50,
-            height=50,
+            width=60,
+            height=60,
             text="-",
             text_color=darkBlue,
             hover_color=cafe,
@@ -224,22 +213,30 @@ class MenuScreen:
             bg_color=darkBlue,
             font=(normal, 30, "bold"),
             corner_radius=20,
+            command=removeItem
         )
-        productQuantityMinusButton.grid(row=1, column=5, padx=5)
+        productQuantityMinusButton.grid(row=1, column=5, padx=((width - 880) / 20))
 
-        productQuantityValue = Label(
+        productQuantityValue = CTkLabel(
             selectedProductDetailsFrame,
             text="0",
             font=(lucida, 20),
-            bg=darkBlue,
-            fg=white,
+            width=60,
+            bg_color=transparent,
+            fg_color=transparent,
         )
-        productQuantityValue.grid(row=1, column=6, padx=30, pady=22)
+        productQuantityValue.grid(row=1, column=6, pady=20, padx=((width - 880) / 20))
+
+        def addItem():
+            self.thisQuantity += 1
+            productQuantityValue.configure(text=self.thisQuantity)
+            self.totalPrice += self.selectedProduct.price
+            productPricevalue.configure(text=self.totalPrice)
 
         productQuantityPlusButton = CTkButton(
             selectedProductDetailsFrame,
-            width=50,
-            height=50,
+            width=60,
+            height=60,
             text="+",
             text_color=darkBlue,
             hover_color=cafe,
@@ -247,17 +244,19 @@ class MenuScreen:
             bg_color=darkBlue,
             font=(normal, 30, "bold"),
             corner_radius=20,
+            command=addItem
         )
-        productQuantityPlusButton.grid(row=1, column=7, padx=5)
+        productQuantityPlusButton.grid(row=1, column=7, padx=((width - 880) / 20))
 
-        productPriceLabel = Label(
+        productPriceLabel = CTkLabel(
             selectedProductDetailsFrame,
             text="Total Price :  ",
             font=(lucida, 20),
-            bg=darkBlue,
-            fg=white,
+            width=150,
+            bg_color=transparent,
+            fg_color=transparent,
         )
-        productPriceLabel.grid(row=1, column=8, pady=22)
+        productPriceLabel.grid(row=1, column=8, pady=20, padx=((width - 880) / 20))
 
         productPricevalue = CTkLabel(
             selectedProductDetailsFrame,
@@ -265,9 +264,10 @@ class MenuScreen:
             font=(lucida, 20),
             bg_color=transparent,
             fg_color=transparent,
+            width=100,
             wraplength=100
         )
-        productPricevalue.grid(row=1, column=9, pady=22)
+        productPricevalue.grid(row=1, column=9, pady=20, padx=((width - 880) / 20))
 
         def toNextScreen():
             price = self.totalPrice
@@ -281,7 +281,7 @@ class MenuScreen:
 
         proceedButton = CTkButton(
             selectedProductDetailsFrame,
-            width=50,
+            width=100,
             height=50,
             text="→",
             text_color=darkBlue,
@@ -292,7 +292,7 @@ class MenuScreen:
             corner_radius=20,
             command=toNextScreen,
         )
-        proceedButton.grid(row=1, column=10)
+        proceedButton.grid(row=1, column=10, padx=((width - 880) / 20))
 
 
         def destroy(buttons):
@@ -303,9 +303,8 @@ class MenuScreen:
             self.selectedProduct = self.products[i]
             product = self.selectedProduct
             productNameValue.configure(text=product.name)
-            self.totalPrice += product.price
-            productPricevalue.configure(text=self.totalPrice)
-            productQuantityValue.configure(text="1")
+            self.thisQuantity = 0
+            productQuantityValue.configure(text=self.thisQuantity)
 
         def showProducts(products):
             c = 1
@@ -315,12 +314,11 @@ class MenuScreen:
                     c = 1
                     r += 1
                 product = products[i]
-
                 productItem = CTkButton(
                     productFrame,
                     width=240,
                     height=150,
-                    text=str(product.name),
+                    text=str(product.name) + "\n" + str(product.price),
                     hover=True,
                     hover_color=darkBlue,
                     text_color=white,
@@ -334,9 +332,6 @@ class MenuScreen:
                 productItem._text_label.configure(wraplength=200)
                 productItem.grid(row=r, column=c, padx = ((width - 200) / 32), pady = 50)
                 c+=1
-
-
-
 
         self.root.mainloop()
         print(self.selectedProduct.name)
