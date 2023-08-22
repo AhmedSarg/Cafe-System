@@ -2,14 +2,22 @@ from tkinter import *
 import sys
 
 sys.path.insert(0, "values")
+sys.path.insert(0, "classes")
+sys.path.insert(0, "database")
 from colors import *
 from fonts import *
 from customtkinter import *
 from PIL import Image
+from bill import *
+from order import *
+from db_controller import *
 
 
 class RecieptScreen:
-    def __init__(self, price, selection, client):
+    def __init__(self, price, selection, client, orders):
+
+        connection = openConnection()
+
         self.root = Tk()
         self.root.title("Reciept")
         self.root.state("zoomed")
@@ -196,29 +204,30 @@ class RecieptScreen:
         )
         productPriceLabel.grid(row=0, column=9)
 
-        # productNameValue = CTkLabel(
-        #     productFrame,
-        #     text="Coffee",
-        #     font=(lucida, 20),
-        #     text_color=white,
-        # )
-        # productNameValue.grid(row=1, column=1)
+        for i in range(0, len(orders)):
+            productNameValue = CTkLabel(
+                productFrame,
+                text=orders[i].name,
+                font=(lucida, 20),
+                text_color=white,
+            )
+            productNameValue.grid(row=i + 1, column=1)
 
-        # productCountValue = CTkLabel(
-        #     productFrame,
-        #     text="2",
-        #     font=(lucida, 20),
-        #     text_color=white,
-        # )
-        # productCountValue.grid(row=1, column=5)
+            productCountValue = CTkLabel(
+                productFrame,
+                text=orders[i].count,
+                font=(lucida, 20),
+                text_color=white,
+            )
+            productCountValue.grid(row=i + 1, column=5)
 
-        # productPriceValue = CTkLabel(
-        #     productFrame,
-        #     text="30",
-        #     font=(lucida, 20),
-        #     text_color=white,
-        # )
-        # productPriceValue.grid(row=1, column=9)
+            productPriceValue = CTkLabel(
+                productFrame,
+                text=orders[i].totalPrice,
+                font=(lucida, 20),
+                text_color=white,
+            )
+            productPriceValue.grid(row=i + 1, column=9)
 
         productFrame.grid(row=1, column=0, padx=30, pady=(30, 50))
 
@@ -242,6 +251,7 @@ class RecieptScreen:
         def toCashScreen():
             self.root.destroy()
             from f_cash_screen import CashScreen
+
             CashScreen(price, selection, client)
 
         buttonBack = CTkButton(
@@ -256,13 +266,20 @@ class RecieptScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
-            command=toCashScreen
+            command=toCashScreen,
         )
         buttonBack.grid(row=0, column=1)
 
         def toSuccessScreen():
+            addOrdertoDB(connection, orders)
+
+            bill = Bill(orders[0].id)
+            bill.addBillDetails(client.id, orders[0].id, price)
+            addBilltoDB(connection, bill)
+
             self.root.destroy()
             from h_success_screen import SuccessScreen
+
             SuccessScreen()
 
         buttonNext = CTkButton(
@@ -277,7 +294,7 @@ class RecieptScreen:
             bg_color=transparent,
             font=(lucida, 22),
             corner_radius=16,
-            command=toSuccessScreen
+            command=toSuccessScreen,
         )
         buttonNext.grid(row=0, column=9)
 
@@ -286,3 +303,4 @@ class RecieptScreen:
         mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
         self.root.mainloop()
+        endConnection(connection)

@@ -29,14 +29,14 @@ class SplashScreen:
         )
         logo.place(x=388, y=250)
 
-        lbl = Label(
+        label = Label(
             self.root,
             text="Cafe System",
             font=(lucida, 40),
             fg=black,
             bg=beige,
         )
-        lbl.place(x=245, y=150)
+        label.place(x=245, y=150)
 
         self.root.overrideredirect(True)
 
