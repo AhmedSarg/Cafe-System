@@ -84,3 +84,4 @@ class SelectionScreen:
         buttonsFrame.place(anchor="center", relx=0.5, rely=0.5)
 
         self.root.mainloop()
+SelectionScreen()
