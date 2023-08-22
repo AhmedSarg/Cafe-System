@@ -11,7 +11,7 @@ from PIL import Image
 
 
 class CashScreen:
-    def __init__(self, price, selection, client):
+    def __init__(self, price, selection, client, orders):
         self.root = Tk()
         self.root.title("Cash Calculate")
         self.root.state("zoomed")
@@ -263,7 +263,7 @@ class CashScreen:
             if selection == "takeaway":
                 from g_reciept_screen import RecieptScreen
 
-                RecieptScreen(price, selection, client)
+                RecieptScreen(price, selection, client, orders)
             elif selection == "cafe":
                 from h_success_screen import SuccessScreen
 
@@ -290,6 +290,3 @@ class CashScreen:
         mainFrame.place(anchor="center", relx=0.5, rely=0.5)
 
         self.root.mainloop()
-
-
-# CashScreen("30", "takeaway")

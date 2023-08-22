@@ -113,7 +113,7 @@ class LoginScreen:
         def toSelectionScreen():
             username = usernameEntry.get()
             password = passwordEntry.get()
-            if username == "" and password == "":
+            if username == "ahmed123" and password == "12345":
                 self.root.destroy()
                 from c_selection_screen import SelectionScreen
                 SelectionScreen()
