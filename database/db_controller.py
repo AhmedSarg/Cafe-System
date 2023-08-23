@@ -68,10 +68,11 @@ def addBilltoDB(connection, bill):
 def addOrdertoDB(connection, orders):
     cursor = connection.cursor()
     for order in orders:
-        cursor.execute(
-            """
-            INSERT INTO Order_Items(Bill_ID, Product_Count, Total_Price, Product_Name) values (?, ?, ?, ?)
-            """,
-            (order.id, order.count, order.totalPrice, str(order.name)),
-        )
+        if order.count > 0:
+            cursor.execute(
+                """
+                INSERT INTO Order_Items(Bill_ID, Product_Count, Total_Price, Product_Name) values (?, ?, ?, ?)
+                """,
+                (order.id, order.count, order.totalPrice, str(order.name)),
+            )
     connection.commit()
