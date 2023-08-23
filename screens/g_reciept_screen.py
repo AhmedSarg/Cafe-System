@@ -253,7 +253,7 @@ class RecieptScreen:
             self.root.destroy()
             from f_cash_screen import CashScreen
 
-            CashScreen(price, selection, client)
+            CashScreen(price, selection, client, orders)
 
         buttonBack = CTkButton(
             buttonsFrame,
